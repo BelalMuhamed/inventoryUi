@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="holder">
+        <div class="draw-card">
+            <div class="logo">
+                <img src="../../../../assets/Imgs/AUB-Logo.png" alt="aub logo" style="height:50px;">
+            </div>
+            <div class="cardholdername">
+                <span>{{name}}</span>
+            </div>
+        </div>
+        <div class="mb-3 mt-3 w-100">
+            <label for="cardholdername" class="form-label">Card Holder Name</label>
+            <input type="text" class="form-control" id="cardholdername" maxlength="22" minlength="1" [(ngModel)]="name">
+        </div>
+        <div class="mb-3 mt-3 w-100">
+            <label for="cardproduct" class="form-label">Card Product</label>
+            <input type="text" class="form-control" id="cardproduct">
+        </div>
+        <button class="btn btn-primary w-25">Print</button>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+  <h2 mat-dialog-title>Change user Machine</h2>
+    <mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label> Machines</mat-label>
+        <mat-select [(value)]="selectedMachine" >
+        <mat-option *ngFor="let machine of machinesInBranch" [value]="machine.ip">
+          {{ machine.name }}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button (click)="submit()" [disabled]="!selectedMachine">Submit</button>
+    </mat-dialog-actions>

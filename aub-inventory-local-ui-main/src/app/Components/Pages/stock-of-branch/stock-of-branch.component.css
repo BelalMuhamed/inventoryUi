@@ -1,0 +1,21 @@
+table td , th{
+    vertical-align: center;
+    text-align: center;
+}
+
+table th {
+    background-color: #0f85d3;
+    color: white;
+    font-weight: bold;
+}
+
+table th:first-child{
+    border-radius: 10px 0px 0px 0px;
+}
+
+table th:last-child{
+    border-radius: 0px 10px 0px 0px;
+}
+
+
+

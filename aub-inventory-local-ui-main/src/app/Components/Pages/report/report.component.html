@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<h2 style="color: #36454F;" class="text-center mt-3 mb-2">System Reports</h2>
+<div class="justify-content-center d-flex mb-4">
+    <div style="height: 1px;width: 60px;background-color: #0f85d3;"></div>
+</div>
+<div class="container">
+    <mat-tab-group color="#0f85d3" style="height: 100%;">
+        <!-- <mat-tab label="Cards" class="text-info" > <app-cards-report> </app-cards-report> </mat-tab> -->
+        <mat-tab><ng-template mat-tab-label><span class="text-info">Cards</span></ng-template><app-cards-report></app-cards-report></mat-tab>
+        <!-- <mat-tab label="Transactions" class="text-info"> <app-transactions-report></app-transactions-report> </mat-tab> -->
+         <mat-tab><ng-template mat-tab-label><span class="text-info">Stocks</span></ng-template><app-stock-report></app-stock-report></mat-tab>
+
+        <!-- <mat-tab label="Stocks" class="text-info"> <app-stock-report></app-stock-report> </mat-tab> -->
+        <!-- <mat-tab *ngIf="showPerformanceFlag" label="Performance" class="text-info"> <app-performance></app-performance> </mat-tab> -->
+         <mat-tab><ng-template mat-tab-label><span class="text-info">Performance</span></ng-template><app-performance></app-performance></mat-tab>
+
+    </mat-tab-group>
+</div>

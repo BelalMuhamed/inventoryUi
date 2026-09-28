@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <h3>Products Request</h3>
+
+  <table class="table table-bordered table-striped text-center align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let product of productsForms; let i = index" [formGroup]="product">
+        <td>{{ i + 1 }}</td>
+
+        <!-- ✅ Dropdown products -->
+        <td>
+          <select class="form-select" formControlName="productId">
+  <option [ngValue]="null" disabled>Select product...</option>
+
+  <option *ngFor="let p of getAvailableProducts(i)" [ngValue]="p.id">
+    {{ p.productName }}
+  </option>
+</select>
+
+        </td>
+
+        <td>
+          <input type="number" class="form-control" placeholder="Quantity" formControlName="quantity" />
+         <div
+    class="text-danger small mt-1"
+    *ngIf="
+      product.get('quantity')?.invalid &&
+      (product.get('quantity')?.touched || product.get('quantity')?.dirty)
+    "
+  >
+    Quantity is required and must be at least 1.
+  </div>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeProduct(i)">🗑 Remove</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="productsForms.length === 0">
+        <td colspan="4" class="text-muted">No products added yet.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="addProduct()"
+      [disabled]="productsForms.length >= products.length"
+    >
+      + Add Product
+    </button>
+
+    <button type="button" class="btn btn-primary" (click)="save()"   [disabled]="requestProduts.invalid || requestProduts.length === 0"
+>💾 Save</button>
+  </div>
+</div>

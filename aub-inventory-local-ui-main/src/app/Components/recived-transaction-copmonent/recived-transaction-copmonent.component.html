@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+<section class="main-bg pt-4">
+
+
+<div class="d-flex justify-content-between cc-stock flex-column container align-items-start  my-3 p-0 ps-3 py-3"
+     *ngFor="let productRequest of transactionProducts">
+
+  <div class="d-flex justify-content-between  w-100  ">
+    <div class="d-flex justify-content-between w-50">
+      <div>
+      <span class="me-4">{{productRequest.productName}}</span>
+
+      <span class="me-2 ps-2"
+            style="border-left: 3px solid rgb(0, 140, 255);border-radius: 10px;">
+       Quantity: {{productRequest.quantity}}
+      </span>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div>
+      <span class="me-4"
+            (click)="GetCards(productRequest)"
+            style="cursor: pointer;">
+        <i class="fa-solid"
+           [ngClass]="expandedCards[productRequest.productId] ? 'fa-angle-up' : 'fa-angle-down'"
+           style="color: rgb(15, 133, 212);"></i>
+      </span>
+    </div>
+  </div>
+
+ <!-- <div *ngIf="expandedCards[productRequest.productId] "
+     class="w-100 ms-5 mt-4">
+
+  <div class="cards-grid">
+    <div class="card-item w-50" *ngFor="let card of expandedCards[productRequest.productId]">
+
+      <input type="checkbox"
+             class="form-check-input me-2"
+             (change)="toggleCardSelection(card, $event)" />
+
+      <span>{{ card.maskedPan }}</span>
+
+    </div>
+  </div>
+
+</div> -->
+<div *ngIf="expandedCards[productRequest.productId]" class="w-100 ms-5 mt-4">
+
+<input type="text"
+       class="form-control w-50 mb-3"
+       placeholder="Search by Masked Pan..."
+       [(ngModel)]="searchText[productRequest.productId]"
+       (input)="GetCards(productRequest, 1, true)" />
+
+  <!-- CARDS -->
+  <div class="cards-grid">
+    <div class="card-item w-50" *ngFor="let card of expandedCards[productRequest.productId]?.data">
+
+      <input type="checkbox"
+             class="form-check-input me-2"
+              [checked]="isCardSelected(productRequest.productId, card)"
+       (change)="toggleCardSelection(productRequest.productId, card,$event)" />
+
+      <span>{{ card.maskedPan }}</span>
+
+    </div>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="d-flex mt-3 gap-2">
+    <button class="btn btn-outline-primary"
+            [disabled]="expandedCards[productRequest.productId]?.page === 1"
+            (click)="changePage(productRequest.productId, -1)">
+      Prev
+    </button>
+
+    <span class="px-2">
+      Page {{expandedCards[productRequest.productId]?.page}}
+    </span>
+
+    <button class="btn btn-outline-primary"
+
+            (click)="changePage(productRequest.productId, +1)">
+      Next
+    </button>
+  </div>
+
+</div>
+
+
+
+</div>
+<div class="m-auto w-100  d-flex justify-content-center">
+<button class="btn btn-primary mt-4 " (click)="submitTransaction()">Submit Transaction</button>
+</div>
+</section>
+
+

@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Edit Print Configurations for {{this.data.selectedProduct.printedFace=== 0 ? 'Front' : 'Back'}} face {{this.data.selectedProduct.productName}}</h2>
+<mat-dialog-content>
+<form [formGroup]="configForm" (submit)="onSave()">
+ <div class="row mb-3">
+     <div class="col-md-6">
+        <label for="model" class="form-label" style="color: #0f85d3;">Font</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          formControlName="font"
+          autocomplete="font"
+          [ngClass]="{
+            'is-invalid':
+              configForm.get('font')?.invalid &&
+              configForm.get('font')?.touched
+          }"
+        />
+
+        <div *ngIf="configForm.get('font')?.invalid &&configForm.get('font')?.touched" class="invalid-feedback">Font is required</div>
+
+      </div>
+
+        <div class="col-md-6">
+        <label for="sn" class="form-label" style="color: #0f85d3;">CPI</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sn"
+          formControlName="cpi"
+          autocomplete="cpi"
+          [ngClass]="{
+            'is-invalid':
+              configForm.get('cpi')?.invalid &&
+              configForm.get('cpi')?.touched
+          }"
+        />
+
+        <div *ngIf="configForm.get('cpi')?.invalid &&configForm.get('cpi')?.touched" class="invalid-feedback">CPI is required</div>
+
+      </div>
+
+
+</div>
+<div class="row mb-3">
+     <div class="col-md-6">
+        <label for="model" class="form-label" style="color: #0f85d3;">Offset X</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          formControlName="offSetX"
+          autocomplete="offSetX"
+          [ngClass]="{
+            'is-invalid':
+              configForm.get('offSetX')?.invalid &&
+              configForm.get('offSetX')?.touched
+          }"
+        />
+
+        <div *ngIf="configForm.get('offSetX')?.invalid &&configForm.get('offSetX')?.touched" class="invalid-feedback">Offset X is required</div>
+
+      </div>
+
+        <div class="col-md-6">
+        <label for="sn" class="form-label" style="color: #0f85d3;">Offset Y</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sn"
+          formControlName="offSetY"
+          autocomplete="offSetY"
+          [ngClass]="{
+            'is-invalid':
+              configForm.get('offSetY')?.invalid &&
+              configForm.get('offSetY')?.touched
+          }"
+        />
+
+        <div *ngIf="configForm.get('offSetY')?.invalid &&configForm.get('offSetY')?.touched" class="invalid-feedback">OffSet Y is required</div>
+
+      </div>
+
+
+    </div>
+<div class="mb-3">
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+</div>
+
+<div class="row mb-3" *ngIf="configForm.get('image')?.value">
+  <img [src]="'data:image/jpeg;base64,' + configForm.get('image')?.value"
+       class="w-75 p-4" />
+</div>
+
+</form>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

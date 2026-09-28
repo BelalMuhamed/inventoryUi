@@ -1,0 +1,200 @@
+<app-navbar></app-navbar>
+<div class="container  d-flex justify-content-around align-items-center my-5 ps-5  w-75 ">
+  <!-- card -->
+ <form class="w-50" [formGroup]="PrintCardHolderNameForm" (submit)="Print()">
+
+    <div class=" card w-75 visa-card text-white rounded-4 px-3 py-4 shadow-lg  " style=" background: linear-gradient(135deg, #1A1F71, #2E8BFF); font-family: 'Segoe UI', sans-serif;">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h5 class="mb-0 fst-italic ">MDP</h5>
+          </div>
+          <img src="../../../../assets/Imgs/mdplogo.png" width="60" alt="VISA Logo">
+        </div>
+
+
+        <div class="P-4  ">
+          <img src="../../../../assets/Imgs/chip_card_200px.png" class="pt-3" alt="Chip" style="width: 60px;">
+        </div>
+
+        <div class="mt-3">
+
+          <h5 class="fw-bold fs-3">****    ****    ****    1234</h5>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3 fs-3">
+            <div>
+
+          <input type="text" name="cardHolder"
+                class="form-control-plaintext fw-light fs-5 text-white p-0  w-100 "
+                placeholder="Enter card holder name"
+                formControlName="CardHolderName"
+                 [ngClass]="{
+            'is-invalid':
+              PrintCardHolderNameForm.get('CardHolderName')?.invalid &&
+              PrintCardHolderNameForm.get('CardHolderName')?.touched
+          }">
+        <div class="text-danger fs-6 mt-1"
+  *ngIf="PrintCardHolderNameForm.get('CardHolderName')?.touched">
+
+  <div *ngIf="PrintCardHolderNameForm.get('CardHolderName')?.errors?.['required']">
+    Card Holder Name is required.
+  </div>
+  <div *ngIf="PrintCardHolderNameForm.get('CardHolderName')?.errors?.['minlength']">
+    Minimum 5 characters required.
+  </div>
+  <div *ngIf="PrintCardHolderNameForm.get('CardHolderName')?.errors?.['maxlength']">
+    Maximum 24 characters allowed.
+  </div>
+  <div *ngIf="PrintCardHolderNameForm.get('CardHolderName')?.errors?.['pattern']">
+    Only uppercase letters and numbers are allowed (A-Z, 0-9).
+  </div>
+</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+     <div class="w-75">
+      <label style="color: #0f85d3; margin-top: 20px;">  Card type</label>
+                            <label style="color: red;">*</label>
+                            <select class="form-select mb-3 mt-1" formControlName = "Product"
+                            [ngClass]="{
+                                    'is-invalid':
+                                      PrintCardHolderNameForm.get('Product')?.invalid &&
+                                      PrintCardHolderNameForm.get('Product')?.touched
+                                  }">
+                                <option value="" disabled selected>Select card Type...</option>
+                                <option [ngValue]="item"  *ngFor="let item of products" >{{item.productName}}</option>
+
+                            </select>
+                               <div class="text-danger fs-6 mt-1"
+         *ngIf="PrintCardHolderNameForm.get('Product')?.invalid &&
+                PrintCardHolderNameForm.get('Product')?.touched">
+        Product Type is required.
+    </div>
+
+    </div>
+
+    <div class="text-start">
+        <button  class="btn mt-3 px-5 login-btn" [class.disabled]='PrintCardHolderNameForm.invalid'>Print</button>
+    </div>
+
+
+</form>
+
+
+
+  <!-- machine -->
+<div  class="  card py-4 ps-3"[formGroup]="SigmaInfoForm" style=" background: linear-gradient(135deg, #1A1F71, #2E8BFF); font-family: 'Segoe UI', sans-serif;"  >
+
+  <div *ngIf="!isloading" class="container">
+
+     <div class="d-flex justify-content-end">
+
+<span (click)="GetMachineInfo()" title="Get machine info" [class.disabled]="!btndisabled">
+  <i class="fa-solid fa-arrows-rotate text-white pointer"></i>
+</span>
+<span (click)="RestartPrinter()"  title=" restart machine "[class.disabled]="!btndisabled" >
+<i class="fa-solid fa-power-off text-warning mx-3 pointer"></i>
+</span>
+
+
+
+
+      </div>
+       <!-- Machine Status -->
+        <div class="d-flex">
+      <label class="text-white " for="Status">Machine status: </label>
+      <input type="text" name="Status" id="Status"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+          formControlName="status"
+            >
+      </div>
+      <!-- IP -->
+       <div class="d-flex">
+      <label class="text-white  "> IP  : </label>
+      <input type="text" name="IP"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+             formControlName="Ip"
+
+            >
+      </div>
+        <!-- model -->
+          <div class="d-flex">
+      <label class="text-white  "> Model  : </label>
+      <input type="text" name="model"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+             formControlName="model"
+
+            >
+          </div>
+
+
+
+          <!-- sn -->
+            <div class="d-flex">
+      <label class="text-white  "> Serial Number : </label>
+      <input type="text" name="sn"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+             formControlName="serialNumber"
+
+            >
+          </div>
+      <!-- status -->
+      <div class="d-flex">
+      <label class="text-white ">Status : </label>
+      <input type="text" name="feederId"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+          formControlName="status"
+            >
+      </div>
+
+
+
+      <!-- Lock state -->
+       <div class="d-flex">
+      <label class="text-white ">Lock state : </label>
+      <input type="text" name="rejectedId"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+          formControlName="LockState"
+            >
+      </div>
+
+      <!-- FeederStatus -->
+       <div class="d-flex">
+      <label class="text-white " for="port">Feeder Status : </label>
+      <input type="text" name="port" id="port"
+             class="form-control-plaintext fw-semibold text-white p-0  w-auto "
+            readonly
+          formControlName="FeederStatus"
+            >
+      </div>
+
+
+
+
+
+    </div>
+    <div *ngIf="isloading" class=" d-flex justify-content-center align-items-center minw">
+      <div class="spinner "></div>
+    </div>
+</div>
+
+
+
+ </div>
+
+
+
+
+

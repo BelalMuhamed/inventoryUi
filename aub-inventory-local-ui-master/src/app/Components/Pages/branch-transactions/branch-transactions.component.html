@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center align-items-center container">
+    <div style="width: 100%;">
+        <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Your Cards Transactions</h2>
+        <div class="justify-content-center d-flex mb-3">
+            <div style="height: 1px;width: 60px;background-color: #0f85d3;"></div>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Card Type</th>
+                    <th>Amount</th>
+                    <th>From</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>User</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of branchTransactions let i = index" class="text-center">
+                    <td>{{i+1}}</td>
+                    <td>{{transaction.productName}}</td>
+                    <td>{{transaction.cardAmount}}</td>
+                    <td>{{transaction.source}}</td>
+                    <td>{{transaction.transactionDate|date:'MMM d, y'}}</td>
+                    <td>{{transaction.transactionDate|date:'h:mm a'}}</td>
+                    <td>{{transaction.userName}}</td>
+                    <td><div [ngSwitch]="transaction.transactionStatus">
+                        <div *ngSwitchCase="0">Confirmed</div>
+                        <div *ngSwitchCase="1">Declined</div>
+                        <div *ngSwitchCase="2">On Transfer</div>
+                        <div *ngSwitchCase="3">Waiting</div>
+                        <div *ngSwitchDefault></div>
+                    </div></td>
+                    <td>
+                        <button class="btn btn-success me-2" (click)="confirmTransaction(transaction)">Recieved</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

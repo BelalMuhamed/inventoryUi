@@ -1,0 +1,21 @@
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: #fff !important;
+}
+
+::ng-deep .mat-mdc-dialog-actions button.mat-mdc-button {
+  color: #f44336 !important;
+}
+
+::ng-deep .mat-mdc-dialog-actions button.mat-mdc-raised-button {
+  background-color: #0f85d3 !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-dialog-container {
+  overflow: visible !important; 
+}
+
+mat-dialog-content {
+  max-height: 70vh;
+  overflow-y: auto;
+}

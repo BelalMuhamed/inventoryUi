@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+
+<form [formGroup]="destroyCardForm">
+
+    <div class="justify-content-center align-items-center d-flex container">
+        <div style="width: 100%;">
+            <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Card Destruction Reporting</h2>
+            <div class="justify-content-center d-flex mb-3">
+                <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+            </div>
+
+            <div>
+                <label class="mb-2">Card Type </label>
+                <label style="color: red;">*</label>
+                <select class="form-select mb-3" formControlName="cardType"
+                    [ngClass]="{'is-invalid':cardType?.errors?.['required'] && cardType?.touched}"
+                >
+                    <option value="" disabled selected>Select Card Type...</option>
+                    <option [value]="cardType.productName" *ngFor="let cardType of products">{{cardType.productName}}</option>
+                    
+                </select>
+
+                <label class="mb-2">PAN</label>
+                <label style="color: red;">*</label>
+                <input type="number" onKeyPress="if(this.value.length==16) return false;" class="form-control"
+                    placeholder="Enter 16 Digits PAN..." formControlName="PAN"
+                    [ngClass]="{'is-invalid':(pan?.errors?.['required'] ||  pan?.value?.toString().length !=16) && pan?.touched}"
+                >
+                <div *ngIf="pan?.value?.toString().length !=16 && pan?.touched">
+                    <div class="text-danger">PAN must be 16 digits</div>
+                </div>
+                <label class="mb-2 mt-3">Reason</label>
+                <label style="color: red;">*</label>
+                <input type="text" class="form-control mb-3" placeholder="Enter Destruction Reason..."formControlName="message"
+                    [ngClass]="{'is-invalid':message?.errors?.['required'] && message?.touched}"
+                >
+
+                <label class="mb-1">Branch Requesting</label>
+                <label style="color: red;">*</label>
+                <input class="form-control mb-4" [placeholder]="branchReporting" [disabled]="true" >
+    
+                <div class="text-center">
+                    <button type="button" class="btn destroytBtn text-center" style="color: white;" 
+                    [disabled]="destroyCardForm.invalid" (click)="updateCardDestroy()">Send Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

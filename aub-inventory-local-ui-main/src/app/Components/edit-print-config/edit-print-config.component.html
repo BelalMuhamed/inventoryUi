@@ -1,0 +1,217 @@
+
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+
+    <form [formGroup]="addPrintConfigForm" (submit)="onUpdate()">
+
+
+
+
+    <div class="row mb-3">
+    <!--font size -->
+     <div class="col-md-4">
+        <label for="fontSize" class="form-label" style="color: #0f85d3;">Font Size</label>
+            <label style="color: red;">*</label>
+       <input
+  type="number"
+  class="form-control"
+  id="fontSize"
+  formControlName="fontSize"
+  autocomplete="off"
+  min="1"
+  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('fontSize')?.invalid &&
+      addPrintConfigForm.get('fontSize')?.touched
+  }"
+/>
+
+
+        <div *ngIf="addPrintConfigForm.get('fontSize')?.invalid &&addPrintConfigForm.get('fontSize')?.touched" class="invalid-feedback">fontSize is required</div>
+
+      </div>
+
+        <!-- riponType -->
+         <div class="col-md-4">
+  <label for="riponType" class="form-label" style="color: #0f85d3;">Ripon Type</label>
+  <label style="color: red;">*</label>
+ <select
+  id="riponType"
+  class="form-select w-100"
+  formControlName="riponType"
+  required
+  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('riponType')?.invalid &&
+      addPrintConfigForm.get('riponType')?.touched
+  }"
+>
+  <option value="" disabled selected>Select Ripon Type...</option>
+  <option *ngFor="let ripon of RIBBON_TYPES" [value]="ripon">
+    {{ ripon }}
+  </option>
+</select>
+
+
+  <div *ngIf="addPrintConfigForm.get('riponType')?.errors && addPrintConfigForm.get('riponType')?.touched" class="invalid-feedback">
+    <div *ngIf="addPrintConfigForm.get('riponType')?.errors?.['required']">Ripon Type is required.</div>
+  </div>
+      </div>
+         <!-- print Way-->
+      <div class="col-md-4">
+        <label for="printWay" class="form-label" style="color: #0f85d3;">Print Way</label>
+            <label style="color: red;">*</label>
+
+<select
+  id="printWay"
+  class="form-select w-100"
+  formControlName="printWay"
+  required
+  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('printWay')?.invalid &&
+      addPrintConfigForm.get('printWay')?.touched
+  }"
+>
+  <option value="" disabled selected>Select Printed Way...</option>
+  <option [value]=0>
+   landSpace
+  </option>
+   <option [value]=1>
+   Portrait
+  </option>
+</select>
+        <div *ngIf="addPrintConfigForm.get('printWay')?.invalid &&addPrintConfigForm.get('printWay')?.touched" class="invalid-feedback">Print Way is required</div>
+
+      </div>
+    </div>
+    <div class="row mb-3 ">
+    <!--x -->
+     <div class="col-md-4">
+        <label for="x" class="form-label" style="color: #0f85d3;">Offset X</label>
+            <label style="color: red;">*</label>
+       <input
+  type="number"
+  class="form-control"
+  id="x"
+  formControlName="x"
+  autocomplete="off"
+  min="1"
+  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('x')?.invalid &&
+      addPrintConfigForm.get('x')?.touched
+  }"
+/>
+
+
+        <div *ngIf="addPrintConfigForm.get('x')?.invalid &&addPrintConfigForm.get('x')?.touched" class="invalid-feedback">Offset X is required</div>
+
+      </div>
+       <!--y -->
+     <div class="col-md-4">
+        <label for="y" class="form-label" style="color: #0f85d3;">Offset Y</label>
+            <label style="color: red;">*</label>
+       <input
+  type="number"
+  class="form-control"
+  id="y"
+  formControlName="y"
+  autocomplete="off"
+  min="1"
+  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('y')?.invalid &&
+      addPrintConfigForm.get('y')?.touched
+  }"
+/>
+
+
+        <div *ngIf="addPrintConfigForm.get('y')?.invalid &&addPrintConfigForm.get('y')?.touched" class="invalid-feedback">Offset Y is required</div>
+
+      </div>
+
+      <!--font style -->
+         <div class="col-md-4">
+        <label for="fontStyle" class="form-label" style="color: #0f85d3;"> Font style</label>
+            <label style="color: red;">*</label>
+               <select
+                  id="fontStyle"
+                  class="form-select w-100"
+                  formControlName="fontStyle"
+                  required
+                  [ngClass]="{
+    'is-invalid':
+      addPrintConfigForm.get('fontStyle')?.invalid &&
+      addPrintConfigForm.get('fontStyle')?.touched
+  }"
+                >
+                  <option value="" disabled selected>Select Font...</option>
+                  <option *ngFor="let font of fontStyles" [value]="font">
+                    {{ font }}
+                  </option>
+                </select>
+
+        <div *ngIf="addPrintConfigForm.get('fontStyle')?.invalid &&addPrintConfigForm.get('fontStyle')?.touched" class="invalid-feedback">Font style is required</div>
+
+      </div>
+   </div>
+    <div class="row mb-3">
+        <!-- color -->
+        <div class="col-md-2">
+       <label for="printColor" class="form-label" style="color: #0f85d3;">Select Printing Color</label>
+<label style="color: red;">*</label>
+<br />
+
+<input
+  type="color"
+  id="printColor"
+  formControlName="printColor"
+  style="width: 60px; height: 40px; border: none; cursor: pointer;"
+/>
+
+        <div *ngIf="addPrintConfigForm.get('printColor')?.invalid &&addPrintConfigForm.get('printColor')?.touched" class="invalid-feedback">print color is required</div>
+
+      </div>
+         <div class="col-md-2">
+       <label for="backGroundColor" class="form-label" style="color: #0f85d3;">Select back ground  Color</label>
+<label style="color: red;">*</label>
+<br />
+
+<input
+  type="color"
+  id="backGroundColor"
+  formControlName="backGroundColor"
+  style="width: 60px; height: 40px; border: none; cursor: pointer;"
+/>
+
+        <div *ngIf="addPrintConfigForm.get('backGroundColor')?.invalid &&addPrintConfigForm.get('backGroundColor')?.touched" class="invalid-feedback">back ground color  is required</div>
+
+      </div>
+      <div class="col-md-4">
+         <label for="printColor" class="form-label" style="color: #0f85d3;">Upload Image</label>
+<label style="color: red;">*</label>
+<br />
+<input type="file" accept="image/*" (change)="onImageSelected($event)" />
+
+<!-- Preview -->
+<img *ngIf="previewImage" [src]="previewImage" class="mt-4" width="200" height="auto" />
+
+<!-- Hidden form control -->
+<input type="hidden" formControlName="image" />
+
+      </div>
+
+
+
+    </div>
+     <div class="text-center">
+      <button [disabled]="!addPrintConfigForm.valid" class="btn mt-3 px-5 login-btn">Save </button>
+     </div>
+
+
+  </form>
+
+</div>
+

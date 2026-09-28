@@ -1,0 +1,13 @@
+.mycard{
+    padding: 30px;
+    box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+}
+
+a {
+    color: #0f85d3;
+}
+
+button {
+    background-color: #0f85d3 !important;
+    color:white;
+}

@@ -1,0 +1,51 @@
+
+.card-image {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.overlay-text {
+  position: absolute;
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+
+  min-width: 120px;     /* ← لازم */
+  height: 25px;         /* ← لازم */
+
+  font-size: 10px;      /* ← خليها ثابتة */
+  letter-spacing: 1px;
+}
+
+
+.overlay-text::placeholder {
+  color: rgba(255, 255, 255, 0.4); /* Placeholder خفيف */
+}
+.card-wrapper {
+  position: relative;
+  margin-block: 80px;
+}
+
+.card-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* يضمن إن الصورة مهما اتلفت ما تغطيش العناصر اللي تحت */
+  margin-bottom: 40px;
+}
+
+.card-image-container.vertical {
+  margin-bottom: 120px; /* زيادة مسافة فقط عند الوضع العمودي */
+}
+
+.card-image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+

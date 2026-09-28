@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<h2 *ngIf="CurrentTransaction"
+    style="color: #36454F;"
+    class="text-center mt-3 mb-2">
+  Transaction  #{{CurrentTransaction.id}}
+</h2>
+<section class="main-bg pt-4">
+
+
+<div class="d-flex justify-content-between cc-stock flex-column container align-items-start  my-3 p-0 ps-3 py-3"
+     *ngFor="let productRequest of transactionProducts">
+
+  <div class="d-flex justify-content-between  w-100  ">
+    <div class="d-flex justify-content-between w-50">
+      <div>
+      <span class="me-4">{{productRequest.productName}}</span>
+
+     <span class="me-2 ps-2"
+      style="border-left: 3px solid rgb(0, 140, 255);border-radius: 10px;">
+  Asked Quantity: {{productRequest.quantity}}
+</span>
+ <span class="me-2 ps-2"
+      style="border-left: 3px solid rgb(0, 140, 255);border-radius: 10px;">
+  Received: {{getReceivedCount(productRequest.cardLastSixDigits)}}
+</span>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div>
+
+     <span class="me-2 ps-2 p-1 rounded"
+      [ngClass]="getTransactionProductStatusClass(productRequest.productTransactionStatus)">
+  {{ getTransactionProductStatusText(productRequest.productTransactionStatus) }}
+</span>
+
+
+ <span class="me-4" style="cursor: pointer;"
+      (click)="toggleCards(productRequest.productId, productRequest.cardLastSixDigits)">
+  <i class="fa-solid"
+     [ngClass]="expandedCards[productRequest.productId] ? 'fa-angle-up' : 'fa-angle-down'"
+     style="color: rgb(15, 133, 212);"></i>
+</span>
+
+
+    </div>
+  </div>
+
+ <div *ngIf="expandedCards[productRequest.productId] "
+     class="w-100 ms-5 mt-4">
+
+  <div class="cards-grid">
+  <!-- <div class="card-item w-50" *ngFor="let card of expandedCards[productRequest.productId]">
+    <span [ngClass]="card.cardTransactionStatus === 0 ? 'text-success' : 'text-danger'">
+      {{ card.maskedPan }}
+    </span>
+  </div> -->
+<div class="card-item w-50" *ngFor="let card of expandedCards[productRequest.productId]">
+  <span
+    [ngClass]="
+      CurrentTransaction.transactionStatus == 3
+        ? 'text-primary'
+        : (card.cardTransactionStatus === 0 ? 'text-success' : 'text-danger')
+    ">
+    {{ card.maskedPan }}
+  </span>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</section>

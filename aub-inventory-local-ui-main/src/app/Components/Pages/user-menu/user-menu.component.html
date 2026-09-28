@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+
+<section class="configration">
+
+        <div class="text-center mb-3">
+            <h1 class="text-center mt-3 "  style="color: #36454F;">Print Cards</h1>
+            <div  class="text-center d-flex justify-content-center" style="width: 100%;" >
+                <div style="background-color: #0f85d3; height: 1px; width: 80px;"></div>
+            </div>
+        </div>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 95.4px - 82.4px - 20px);">
+        <div class="d-flex flex-row flex-nowrap justify-content-center align-items-stretch overflow-auto w-100 gap-4">
+
+
+<!--  -->
+          <!-- [routerLink]="['/print-card-holder-name', UserName]" -->
+                <div class="card ms-2  p-3" style="width: 18rem;" (click)="CheckIfUserInTheSameBranchOfMachine()"   >
+                <img src="../../../../assets/Imgs/productPrintConfigs.png" class="card-img-top" alt="Branch">
+                <div class="card-body">
+                  <h4 class="card-text text-center">Print Cards </h4>
+                </div>
+              </div>
+        </div>
+    </div>
+
+</section>

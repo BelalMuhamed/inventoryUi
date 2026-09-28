@@ -1,0 +1,36 @@
+<mat-card style="width: 500px;">
+    <mat-card-header>
+        <mat-card-title>
+             {{data.username}} 
+        </mat-card-title>
+        <!-- <mat-card-subtitle class="fw-bold mt-3">
+            <img src="../../../../../assets/Imgs/icons8-user-80.png" style="height: 25px;" alt="">    
+            {{data.username}}
+        </mat-card-subtitle> -->
+    </mat-card-header>
+
+    <mat-card-content>
+            <div class="row mt-3">
+                <div class="col-md-6 mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Role</label>
+                    <select class="form-select" aria-label="Default select example" name="roles"
+                        [(ngModel)]="data.role">
+                        <option *ngFor="let name of roleNames" [value]="name">{{name}}</option>
+                    </select>
+                </div>
+
+                <!-- <div class="col-md-6 mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Branch</label>
+                    <select class="form-select" aria-label="Default select example" name="branches"
+                        [(ngModel)]="data.branchName">
+                        <option *ngFor="let name of branchNames" [value]="name">{{name}}</option>
+                    </select>
+                </div> -->
+            </div>
+        </mat-card-content>
+
+
+    <mat-card-actions class="justify-content-end">
+           <button mat-button color="warn" (click)="editUser()">Edit</button>
+    </mat-card-actions>
+</mat-card>

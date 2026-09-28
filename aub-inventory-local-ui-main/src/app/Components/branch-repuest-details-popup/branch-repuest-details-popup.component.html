@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-center bg-white text-black py-4">
+<table>
+    <caption>Request #{{data.id}} Details</caption>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of productsDetailsPerRequest">
+      <td>{{ item.productName }}</td>
+      <td>{{ item.askedQuantity }}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>

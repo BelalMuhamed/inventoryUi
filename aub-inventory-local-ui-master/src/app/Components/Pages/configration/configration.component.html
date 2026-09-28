@@ -1,0 +1,158 @@
+<app-navbar></app-navbar>
+<div *ngIf="loaderService.isLoading | async"  class="loader-container">
+    <mat-spinner mode="indeterminate" style="top:50%;left: 50%;"></mat-spinner>
+</div>
+<section class="configration">
+
+        <div class="text-center mb-3">
+            <h1 class="text-center mt-3 "  style="color: #36454F;">Configuration</h1>
+            <div  class="text-center d-flex justify-content-center" style="width: 100%;" >
+                <div style="background-color: #0f85d3; height: 1px; width: 80px;"></div>
+            </div>
+        </div>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 95.4px - 82.4px - 20px);">
+        <div class="d-flex flex-row flex-nowrap justify-content-center align-items-stretch overflow-auto w-100 gap-4">
+
+            <div class="card me-2 p-3" style="width: 18rem;" routerLink="/Branch">
+                <img src="../../../../assets/Imgs/Building-amicoo.svg" class="card-img-top" alt="Branch">
+                <div class="card-body">
+                  <h4 class="card-text text-center">Branch</h4>
+                </div>
+              </div>
+
+
+
+              <div class="card me-2 p-3" style="width: 18rem;" routerLink="/ManageUsers">
+                <img src="../../../../assets/Imgs/User research-bro.svg" class="card-img-top" alt="User">
+                <div class="card-body">
+                  <h4 class="card-text text-center">Users</h4>
+                </div>
+              </div>
+
+              <div class="card me-2 p-3" style="width: 18rem;" routerLink="/Products">
+                <img src="../../../../assets/Imgs/Product iteration-rafiki.svg" class="card-img-top" >
+                <div class="card-body">
+                  <h4 class="card-text text-center">Product Quantity</h4>
+                </div>
+              </div>
+
+                <div class="card ms-2 p-3  d-flex flex-column justify-content-between  " style="width: 18rem;" routerLink="/machine-config-menu" >
+                <div>
+                <img src="../../../../assets/Imgs/MachineConfigImage.png" class="card-img-top mt-3" >
+                </div>
+                <div class=" pb-3">
+                  <h4 class="card-text text-center p-0">Machines Configurations </h4>
+                </div>
+              </div>
+        </div>
+    </div>
+
+</section>
+<!-- <section>
+    <div class="configration mt-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <form [formGroup]="configFrm" class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4  mt-2">
+                            <span>Card Input</span>
+                            <select class="form-select" formControlName="cardInput"
+                            [ngClass]="{
+                                'is-invalid': cardInput?.invalid && (cardInput?.dirty || cardInput?.touched),
+                                'is-valid': cardInput?.valid && (cardInput?.dirty || cardInput?.touched)
+                              }">
+                                <option value="1">Manual</option>
+                                <option value="2">Multi Feeder</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4  mt-2">
+                            <span>Card Exit</span>
+                            <select class="form-select" formControlName="cardExit"
+                            [ngClass]="{
+                                'is-invalid': cardExit?.invalid && (cardExit?.dirty || cardExit?.touched),
+                                'is-valid': cardExit?.valid && (cardExit?.dirty || cardExit?.touched)
+                              }">
+                                <option value="1">Manual</option>
+                                <option value="2">Multi Feeder</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4  mt-2">
+                            <span>Card Reject</span>
+                            <select class="form-select" formControlName="cardReject"
+                            [ngClass]="{
+                                'is-invalid': cardReject?.invalid && (cardReject?.dirty || cardReject?.touched),
+                                'is-valid': cardReject?.valid && (cardReject?.dirty || cardReject?.touched)
+                              }">
+                                <option value="1">Manual</option>
+                                <option value="2">Multi Feeder</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row  mt-3">
+                        <div class="col-md-6  mt-2">
+                            <label for="mip" class="form-label">Machine IP</label>
+                            <input type="text" class="form-control" id="mip" formControlName="ip"
+                            [ngClass]="{
+                                'is-invalid': ip?.invalid && (ip?.dirty || ip?.touched),
+                                'is-valid': ip?.valid && (ip?.dirty || ip?.touched)
+                              }">
+                        </div>
+                        <div class="col-md-2  mt-2">
+                            <label for="mport" class="form-label">Port</label>
+                            <input type="text" class="form-control" id="mport" readonly value="33200">
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <label for="mport" class="form-label">Font Type</label>
+                            <input type="text" class="form-control" id="mport" readonly value="0">
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <label for="mport" class="form-label">Font Size</label>
+                            <input type="text" class="form-control" id="mport" readonly value="100">
+                        </div>
+                    </div>
+                    <div class="row  mt-3">
+                        <div class="col-md-3 mt-2">
+                            <label for="ofx" class="form-label">Offset X</label>
+                            <input type="text" class="form-control" id="ofx" formControlName="offsetX"
+                            [ngClass]="{
+                                'is-invalid': offsetX?.invalid && (offsetX?.dirty || offsetX?.touched),
+                                'is-valid': offsetX?.valid && (offsetX?.dirty || offsetX?.touched)
+                              }">
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <label for="ofx" class="form-label">Offset Y</label>
+                            <input type="text" class="form-control" id="ofy" formControlName="offsetY"
+                            [ngClass]="{
+                                'is-invalid': offsetY?.invalid && (offsetY?.dirty || offsetY?.touched),
+                                'is-valid': offsetY?.valid && (offsetY?.dirty || offsetY?.touched)
+                              }">
+                        </div>
+                        <div class="col-md-2 mt-2  mt-2">
+                            <label for="ftype" class="form-label">Time</label>
+                            <input type="text" class="form-control" id="ftype" readonly value="5 seconds">
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <label for="fsize" class="form-label">Pressure</label>
+                            <input type="text" class="form-control" id="fsize" readonly value="150">
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <label for="fsize" class="form-label">Tip Temp</label>
+                            <input type="text" class="form-control" id="fsize" formControlName="tip"
+                            [ngClass]="{
+                                'is-invalid': tip?.invalid && (tip?.dirty || tip?.touched),
+                                'is-valid': tip?.valid && (tip?.dirty || tip?.touched)
+                              }">
+                        </div>
+                    </div>
+                    <button class="mt-4 btn btn-primary w-25" [disabled]="configFrm.invalid">
+                        Add
+                    </button>
+                </form>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <img src="../../../../assets/Imgs/free-gear-icon-1213-thumb.png" class="img-fluid" alt="config" style="height: 290px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+

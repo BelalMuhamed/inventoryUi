@@ -1,0 +1,41 @@
+.main-bg{
+    background-color: white;
+    min-height: calc(100vh - 95.4px);
+  }
+
+.product-card {
+    margin-left: 10px;
+  }
+
+  .branches-stock-container{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .branch-stock:nth-child(odd){
+    background-color: #f4f3f9;
+    padding: 2px 20px;
+  }
+
+  .branch-stock:nth-child(even){
+    padding: 2px 20px;
+  }
+  .table-list{
+    border-radius: 3px;
+  }
+
+  .branch-stock:hover {
+    background-color: black;
+    color:white;
+  }
+
+  .transfer {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .transferBtn{
+    background-color: #0f85d3;
+}
+.transferBtn:hover{
+    background-color: #eba817;
+}

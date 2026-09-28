@@ -1,0 +1,337 @@
+/* ======================================================
+   ✅ TABLE HEADER (TH)
+====================================================== */
+th {
+  color: #fff !important;
+  background: #0f85d3 !important;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+
+
+/* ======================================================
+   ✅ PAGINATOR (BOTTOM BAR)
+====================================================== */
+::ng-deep .mat-mdc-paginator {
+  background-color: #0f85d3 !important;
+  color: #fff !important;
+  border-top: 2px solid #0c6fb5 !important;
+  font-size: 14px;
+}
+
+/* Range Label (e.g., "1–10 of 100") */
+::ng-deep .mat-mdc-paginator-range-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Navigation Buttons (arrows) */
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.20s ease-in-out;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 50%;
+}
+
+/* Disabled arrows */
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:disabled {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+
+
+/* ======================================================
+   ✅ PAGINATOR — SELECT "ROWS PER PAGE"
+====================================================== */
+
+/* Trigger (the text before selecting) */
+::ng-deep .mat-mdc-select-trigger {
+  color: white !important;
+}
+
+/* Value text (inside bar) */
+::ng-deep .mat-mdc-select-value-text {
+  color: white !important;
+}
+
+/* Dropdown panel background */
+::ng-deep .mat-mdc-select-panel {
+  background-color: #0f85d3 !important;
+  color: white !important;
+}
+
+/* Option text */
+::ng-deep .mat-mdc-option {
+  color: #fff !important;
+  background: #0f85d3 !important;
+}
+
+/* Option hover */
+::ng-deep .mat-mdc-option:hover {
+  background-color: #0c6fb5 !important;
+  color: white !important;
+}
+
+/* Selected option */
+::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background-color: #0c6fb5 !important;
+  color: white !important;
+}
+
+
+
+/* ======================================================
+   ✅ SELECT BORDER FIXES (remove purple border)
+====================================================== */
+
+/* Unfocused border color */
+::ng-deep .mat-mdc-select .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select .mdc-notched-outline__notch {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Focused (white border) */
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__notch {
+  border-color: #fff !important;
+}
+
+
+
+/* ======================================================
+   ✅ SPINNER LOADING (Blue Theme)
+====================================================== */
+.spinner {
+  border: 6px solid #e0e0e0;
+  border-top: 6px solid #0f85d3;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* ✅ Restore Datepicker Panel Background */
+::ng-deep .mat-datepicker-content,
+::ng-deep .mat-date-range-picker,
+::ng-deep .mat-calendar {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* ✅ Restore Datepicker Options (Days) */
+::ng-deep .mat-calendar-body-cell-content {
+  color: #000 !important;
+}
+
+/* ✅ Hover on days */
+::ng-deep .mat-calendar-body-cell:hover .mat-calendar-body-cell-content {
+  background: #e0e0e0 !important;
+}
+
+/* ✅ Selected day */
+::ng-deep .mat-calendar-body-selected {
+  background: #0f85d3 !important;
+  color: #fff !important;
+}
+/* ✅ Force Datepicker Panel to be visible & on top */
+.mat-datepicker-content,
+.mat-mdc-menu-panel,
+.mat-date-range-picker,
+.mat-calendar {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2000 !important;
+}
+
+/* ✅ Days inside calendar */
+.mat-calendar-body-cell-content {
+  color: #000 !important;
+}
+
+/* ✅ Hover day */
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled)
+  .mat-calendar-body-cell-content:hover {
+  background: #e0e0e0 !important;
+}
+
+/* ✅ Selected day */
+.mat-calendar-body-selected {
+  background-color: #0f85d3 !important;
+  color: #fff !important;
+}
+.cdk-overlay-pane {
+  z-index: 6000 !important;
+}
+::ng-deep .mat-date-range-popup,
+::ng-deep .mat-datepicker-content {
+  z-index: 6000 !important;
+  position: absolute !important;
+}
+div, mat-form-field, .mat-form-field-wrapper {
+  overflow: visible !important;
+}
+::ng-deep .cdk-overlay-container {
+  z-index: 5000 !important;
+  position: fixed !important;
+}
+.form-control:focus {
+    border-color: #0f85d3;
+    box-shadow: inset 0 1px 1px rgba(185, 146, 146, 0.075), 0 0 8px rgba(0, 174, 255, 0.925);
+  }
+.form-select:focus {
+    border-color: #0f85d3;
+    box-shadow: inset 0 1px 1px rgba(209, 209, 209, 0.075), 0 0 8px rgba(0, 174, 255, 0.925);
+  }
+
+.destroytBtn{
+      background-color: #0f85d3;
+}
+.destroytBtn:hover{
+      background-color: #eba817;
+}
+
+.main-bg{
+  background-color: white;
+  min-height: calc(100vh - 95.4px);
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+
+
+.dotted::before {
+  content: '';
+  background-color: #0f85d3;
+  width: 5px;
+  height: 5px;
+  display: block;
+  position: absolute;
+  left: -8px;
+  top:12px;
+  border-radius: 50%;
+}
+
+.product-card{
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(255, 162, 0, 0.1) 2px 2px 1px 2px;
+  background-color: rgb(0, 140, 255);
+}
+
+.btn-dark {
+  min-width: 120px;
+}
+
+.product-quantity {
+  margin:0px 10px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 2px 2px 1px 2px;
+  background-color: rgb(0, 140, 255);
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.product-quantity p:first-child {
+  margin-top: 2px;
+}
+
+.product-quantity p:nth-child(2) {
+  margin: 2px;
+}
+
+
+.myCard{
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.selectedBranch{
+  background-color: white;
+  animation: smooth-appear 1.5s ease forwards;
+  opacity:0;
+}
+
+.fav{
+  animation: smooth-appear 1.5s ease forwards;
+  opacity:0;
+}
+.cc-stock{
+  background-color: white;
+  padding: 30px;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+@keyframes smooth-appear {
+  to{
+    opacity:1;
+  }
+}
+
+.orange-underline {
+  border-bottom: 2px solid rgb(0, 140, 255) ;
+}
+
+.loader-container
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 50;
+}
+.transferBtn{
+  background-color: #0f85d3;
+  color: white;
+}
+.transferBtn:hover{
+  background-color: #eba817;
+  color: white;
+
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.card-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+gap: 8px;
+  background: #fafafa;
+}
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+

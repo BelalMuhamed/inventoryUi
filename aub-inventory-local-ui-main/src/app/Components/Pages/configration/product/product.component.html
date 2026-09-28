@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="d-flex align-items-center">
+
+        <div style="width: 100%;">
+            <div class="text-center mb-3">
+                <h1 class="text-center mt-3 "  style="color: #36454F;">Define Products Quantity</h1>
+                <div  class="text-center d-flex justify-content-center" style="width: 100%;" >
+                    <div style="background-color: #0f85d3; height: 1px; width: 80px;"></div>
+                </div>
+            </div>
+            <form [formGroup]="productForm">
+                <label class="mb-1">Select Product</label>
+                <label style="color: red;">*</label>
+                <select class="form-select mb-3" formControlName = "productName">
+                    <option value="" disabled selected>Please Select Product</option>
+                    <option [value]="product.id" *ngFor="let product of products">{{product.productName}}</option>
+                </select>
+                <label class="mb-1">Low Product Threshold </label>
+                <label style="color: red;">*</label>
+                <input class="form-control mb-3" type="number" min="1" placeholder="Enter Lowest Product Quantity..." formControlName="lowProductQuantity"
+                >
+                <label class="mb-1">High Product Threshold </label>
+                <label style="color: red;">*</label>
+                <input class="form-control mb-3" type="number" min="1" placeholder="Enter Highest Product Quantity..." formControlName="highProductQuantity"
+                >
+
+                  
+
+
+
+
+                <div class="text-center">
+                    <button type="button" class="btn submitBtn text-center" style="color: white;" [disabled]="productForm.invalid" (click)="submitProductForm()">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        <div>
+            <img src="../../../../../assets/Imgs/Business Plan-cuate.svg"  height="500px">
+        </div>
+    </div>
+</div>

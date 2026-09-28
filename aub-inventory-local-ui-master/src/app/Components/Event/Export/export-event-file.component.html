@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="container-fluid" style="min-height: 80vh;">
+    <div class="header d-flex align-items-center ms-3">
+        <h3 class="mt-3 mb-3 me-2">
+            Export file for
+            <span class="text-warning">
+                {{selectedBranch}}
+            </span>
+        </h3>
+        <img style="height: 30px;" src="../../../../assets/Imgs/question.png" alt="">
+    </div>
+    <div class="details ms-4">
+        <p class="text-secondary">
+            This page allows you to generate and export a file required for the desktop
+            application used during events. The exported file will be used by the application to print event
+        </p>
+    </div>
+
+    <section class="mycard eventbranch row m-0">
+        <!-- <div class="sourceBranch col-md-4">
+        <label class="form-label">Event Branch</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBranch"
+            (change)="getStock()">
+            <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.branchName}}</option>
+        </select>
+    </div> -->
+        <div class="username col-md-4">
+            <label for="username" class="form-label">
+                Username
+                <span class="text-danger">*</span>
+            </label>
+            <div class="d-flex">
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedUsername">
+                    <option *ngFor="let username of usernames" [value]="username">{{username}}</option>
+                </select>
+                <mat-spinner *ngIf="isAppeared" style="height: 40px;"></mat-spinner>
+            </div>
+        </div>
+
+        <div class="password col-md-4">
+            <label for="password" class="form-label">
+                Password
+                <span class="text-danger">*</span>
+            </label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="selectedPassword">
+        </div>
+    </section>
+
+    <form [formGroup]="form" (ngSubmit)="export()" class="mt-3">
+        <div formArrayName="products" class="mycard" *ngIf="products.controls.length > 0" class="row m-0 p-4 mycard">
+            <div *ngFor="let product of products.controls; let i = index" [formGroupName]="i" class="col-md-4">
+                <label class="form-label">{{ product.value.productName }}</label>
+                <input type="text" class="form-control" type="number" formControlName="cardAmount" min="0"
+                    [max]="product.value.maxAmount" min="1" />
+                <div class="d-flex justify-content align-items-center mt-2">
+                    <img src="../../../assets/Imgs/icons8-info-48.png" style="height:22px;" alt="" class="me-1">
+                    <small class="text-secondary">
+                        Max amount: {{product.value.maxAmount}}
+                    </small>
+                </div>
+
+            </div>
+        </div>
+        <div class="mt-3 d-flex justify-content-center">
+            <button class="btn" type="submit" style="min-width: 150px;">
+                Export
+            </button>
+        </div>
+    </form>
+
+    <section>
+        <div class="header d-flex align-items-center ms-3">
+            <h3 class="mt-3 mb-3 me-2">Undo exported file for
+                <span class="text-warning">
+                    {{selectedBranch}}
+                </span>
+
+            </h3>
+            <img style="height: 30px;" src="../../../assets/Imgs/question.png" alt="">
+        </div>
+        <div class="details ms-4">
+            <p class="text-secondary">
+                If you have exported a file with incorrect details, You have the option to undo the export.
+                This process will restore the stock to the original products quantity.
+            </p>
+            <a routerLink="/Undo-Exported-File">Undo Exported Files</a>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-center container">
+    <div style="width: 100%;">
+        <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Upcoming Requests</h2>
+        <div class="justify-content-center d-flex mb-5">
+            <div style="height: 1px;width: 80px;background-color: #0f85d3;"></div>
+        </div>
+
+
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>Card Type</th>
+                    <th>Amount</th>
+                    <th>Branch Requesting</th>
+                    <th>User Requesting</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let request of upcomingRequests"class="text-center">
+                    <td>{{request.cardsType}}</td>
+                    <td>{{request.cardAmount}}</td>
+                    <td>{{request.branchNameRequesting}}</td>
+                    <td>{{request.userNameRequesting}}</td>
+                    <td>{{request.dateTime|date:'MMM d, y'}}</td>
+                    <td>{{request.dateTime| date:'h:mm a'}}</td>
+                    <td>
+                        <button class="btn btn-danger me-2" (click)="cancelRequest(request)">Cancel</button>
+                        <button class="btn btn-success" (click)="openApproveRequestDialog(request)">Approve</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

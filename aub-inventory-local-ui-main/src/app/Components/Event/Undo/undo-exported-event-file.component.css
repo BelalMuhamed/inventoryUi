@@ -1,0 +1,13 @@
+table td , table th {
+    vertical-align: center;
+    text-align: center;
+}
+
+a {
+    color: #0f85d3;
+}
+
+button {
+    background-color: #0f85d3 !important;
+    color:white;
+}

@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+
+<form [formGroup]="requestCardsForm">
+    <div class="justify-content-center d-flex container align-items-center">
+        <div style="width: 100%;">
+            <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Request Cards</h2>
+            <div class="justify-content-center d-flex mb-3">
+                <div style="height: 1px;width: 60px;background-color: #0f85d3;"></div>
+            </div>
+            <label class="mb-1">Card Type</label>
+            <label style="color: red;">*</label>
+            <select class="form-select mb-3" formControlName="cardsType"
+                [ngClass]="{'is-invalid':cardsType?.errors?.['required'] && cardsType?.touched}"
+            >
+                <option value="" disabled selected>Select Card Type...</option>
+                <option [value]="cardType.productName" *ngFor="let cardType of products">{{cardType.productName}}</option>
+            </select>
+            <label class="mb-1">Amount of Cards </label>
+            <label style="color: red;">*</label>
+            <input class="form-control mb-3" type="number" min="1" placeholder="Enter Amount of Cards Required..."
+                formControlName="cardAmount"
+                [ngClass]="{'is-invalid':cardAmount?.errors?.['required'] && cardAmount?.touched}"
+            >
+            <label class="mb-1">Branch Requesting</label>
+            <label style="color: red;">*</label>
+            <input class="form-control mb-4" [placeholder]="branchRequesting" [disabled]="true" >
+
+            <div class="text-center">
+            <button type="button" class="btn sendRequestBtn text-center" style="color: white;"(click)="sendRequest()" [disabled]="requestCardsForm.invalid">Send Request</button>
+
+            </div>
+        </div>
+    </div>
+</form>

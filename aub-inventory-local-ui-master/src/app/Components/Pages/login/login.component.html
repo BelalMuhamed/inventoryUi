@@ -1,0 +1,39 @@
+<div class="login-body justify-content-center align-items-center" style="width: 100vw; height: 100vh;">
+    <div style="position: absolute;top: 10px;left: 10px;" class="text-logo-bg d-lg-block d-none" >
+        <!-- <img src="../../../../assets/Imgs/logo-sm-w-big.png" style="width: 500px;"> -->
+    </div>
+    <div  style="width: 100%; height: 100%; position: relative;" class="justify-content-center align-items-center d-flex ">
+        <div class="login-form " style="width: 750px;">
+            <div class="d-flex login-box justify-content-center align-items-center">
+                <div class="col text-center left-box d-lg-block d-none">
+                    <img src="../../../../assets/Imgs/mdplogo.png" class="txt-logo col-md-3 img-fluid">
+                </div>
+                <form class="col" [formGroup]="loginForm" (submit)="login()">
+                    <div class=" align-items-center justify-content-center col d-block right-box p-5">
+                        <div>
+                            <!-- <img src="../../../../assets/Imgs/AUB-Logo.png" class="mb-4 img-fluid text-md-center"> -->
+                        </div>
+                        <label style="color: #0f85d3;">User Name</label>
+                        <label style="color: red;">*</label>            
+                        <input class="form-control mb-3" type="text" formControlName="username" [class.is-invalid] = "username?.invalid && username?.touched">
+                        <label style="color: #0f85d3;"> Password</label>
+                        <label style="color: red;">*</label>            
+                        <input class="form-control mb-3" type="password" formControlName="password" [class.is-invalid] = "password?.invalid && password?.touched">                    
+                        <label style="color: #0f85d3;"> Select Branch</label>
+                        <label style="color: red;">*</label>            
+                        <select class="form-select mb-3" formControlName = "branchName"
+                        [class.is-invalid] = "branchName?.invalid && branchName?.touched"
+                        >
+                            <option value="" disabled selected>Select Branch Name...</option>
+                            <option [value]="branch.branchName"  *ngFor="let branch of branches" >{{branch.branchName}}</option>
+                            
+                        </select>
+                        <div class="text-center">
+                            <button [disabled]="!loginForm.valid" class="btn mt-3 px-5 login-btn">Login</button>
+                        </div>                    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

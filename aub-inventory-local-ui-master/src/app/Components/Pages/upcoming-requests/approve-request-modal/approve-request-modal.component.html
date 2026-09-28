@@ -1,0 +1,31 @@
+<div style="width: 600px;" class="d-flex justify-content-center align-items-center">
+    <form style="width: 100%;" [formGroup]="RequestCardsForm">
+        <div class="px-3 py-3 ">
+            <h4 style="color: #36454F;" class="text-center">Configure Request</h4>
+            <div class="justify-content-center d-flex mb-3">
+                <div style="height: 1px;width: 60px;background-color: #0f85d3;"></div>
+            </div>
+            <label >Target Branch</label>
+            <input type="text" class="form-control mb-3" disabled [value]="data.request.branchNameRequesting"            >
+    
+            <label >Source Branch</label>
+            <select class="form-select mb-3" formControlName = "sourceBranch"
+            [ngClass]="{'is-invalid':sourceBranch?.errors?.['required'] && sourceBranch?.touched}"
+            >
+                <option value="" disabled selected>Select Branch...</option>
+                <option *ngFor="let branch of branches">{{branch.branchName}}</option>
+            </select>
+    
+    
+            <label >Transfer Amount</label>
+            <input type="number" class="form-control mb-3" placeholder="Enter Transfer Amount..." min="1" formControlName = "transferAmount"
+            [ngClass]="{'is-invalid':transferAmount?.errors?.['required'] && transferAmount?.touched}"
+            >
+            
+            <div class="text-center">
+                <button class="btn btn-success" [disabled]="RequestCardsForm.invalid" (click)="approveRequest()">Approve Request</button>
+            </div>
+    
+        </div>
+    </form>
+</div>

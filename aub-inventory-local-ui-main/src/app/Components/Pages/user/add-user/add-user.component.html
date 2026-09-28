@@ -1,0 +1,42 @@
+<mat-card style="width: 400px;">
+    <mat-card-header>
+        <!-- <mat-card-title>
+            Add new user
+        </mat-card-title> -->
+    </mat-card-header>
+
+    <mat-card-content>
+        <form class="row" [formGroup]="addUserForm">
+           <div class="col-md-12 mb-2">
+            <label>Username</label>
+            <div class="d-flex">
+                <select class="form-select" aria-label="Default select example" formControlName="username">
+                    <option *ngFor="let username of data.users" [value]="username">{{username}}</option>
+                </select>
+            </div>
+        </div>
+
+           <!-- <div class="col-md-12 mb-2">
+            <label>Branch</label>
+            <select class="form-select" aria-label="Default select example" formControlName="branch">
+                <option *ngFor="let branch of branches" [value]="branch.branchName">{{branch.branchName}}</option>
+              </select>
+           </div> -->
+        
+       
+           <div class="col-md-12">
+            <label>Role</label>
+            <select class="form-select" aria-label="Default select example" formControlName="role">
+                <option *ngFor="let role of roleNames" [value]="role">{{role}}</option>
+              </select>
+           </div>
+            
+        </form>
+        </mat-card-content>
+
+
+    <mat-card-actions class="justify-content-end">
+           <button mat-button color="primary" (click)="addUser()" [disabled]="addUserForm.invalid">Add</button>
+    </mat-card-actions>
+</mat-card>
+

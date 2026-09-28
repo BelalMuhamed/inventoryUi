@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<form>
+    <div class="d-flex justify-content-center align-items-center container">
+        <div style="width: 100%;">
+            <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Create New Branch</h2>
+            <div class="justify-content-center d-flex mb-3">
+                <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+            </div>
+            <div class="row m-0 p-0 align-items-center">
+                <div class="col-md-6">
+                    <form [formGroup]="addBranchForm">
+                        <label>Branch Name</label>
+                        <label style="color: red;">*</label>
+                        <input type="text" class="form-control mb-3" placeholder="Enter Branch Name..."
+                            formControlName="branchName"
+                            [ngClass]="{'is-invalid':branchNameAddForm?.errors?.['required'] && branchNameAddForm?.touched}">
+                        <!-- <label>Low Card Amount</label>
+                        <label style="color: red;">*</label>
+                        <input type="number" min="0" class="form-control mb-3" placeholder="Enter Low Card Amount..."
+                            formControlName="lowCardAmount"
+                            [ngClass]="{'is-invalid':lowCardAmountAddForm?.errors?.['required'] && lowCardAmountAddForm?.touched}"> -->
+                        <!-- <label>Medium Card Amount</label>
+                        <label style="color: red;">*</label>
+                        <input type="number" min="0" class="form-control mb-3" placeholder="Enter Medium Card Amount..."
+                            formControlName="mediumCardAmount"
+                            [ngClass]="{'is-invalid':mediumCardAmountForm?.errors?.['required'] && mediumCardAmountForm?.touched}"> -->
+                        <div class="text-center">
+                            <button type="button" class="btn createBranchBtn text-center mb-5" style="color: white;"
+                                [disabled]="addBranchForm.invalid" (click)="addBranch()">Create Branch</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-6">
+                    <img src="../../../../../assets/Imgs/AddBank.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div style="width: 100%; background-color:#36454F;height: 1px;" class="mb-5"></div>
+            <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Update Existing Branch</h2>
+            <div class="justify-content-center d-flex mb-3">
+                <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+            </div>
+            <div class="row m-0 p-0 align-items-center">
+                <div class="col-md-6">
+                    <form [formGroup]="updateBranchForm">
+                        <label class="mb-2">Select Branch </label>
+                        <label style="color: red;">*</label>
+                        <select class="form-select mb-3" (change)="selectBranch($event)"
+                            formControlName="branchNameSelect"
+                            [ngClass]="{'is-invalid':branchNameSelectupdateForm?.errors?.['required'] && branchNameSelectupdateForm?.touched}">
+                            <option value="" disabled selected>Select Branch Name...</option>
+                            <option [value]="branch.branchName" *ngFor="let branch of branches">{{branch.branchName}}</option>
+                        </select>
+                        <label class="mb-2">New Branch Name</label>
+                        <label style="color: red;">*</label>
+                        <input class="form-control mb-3" [(ngModel)]="selectedBranch"
+                            formControlName="branchNameText">
+                        <!-- <label class="mb-2">New Low Card Amount</label>
+                        <label style="color: red;">*</label>
+                        <input class="form-control mb-3" min="0" type="number" [ngModel]="selectedBranch?.lowCardAmount"
+                            formControlName="lowCardAmount"> -->
+                        <!-- <label class="mb-2">New Medium Card Amount</label>
+                        <label style="color: red;">*</label>
+                        <input class="form-control mb-3" min="0" type="number"
+                            [ngModel]="selectedBranch?.mediumCardAmount" formControlName="mediumCardAmount"> -->
+                        <div class="text-center">
+                            <button type="button" class="btn createBranchBtn text-center mb-5" style="color: white;"
+                                (click)="updateBranch()" [disabled]="updateBranchForm.invalid">Update
+                                Branch</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <img src="../../../../../assets/Imgs/editBank2.png" class="img-fluid" alt="editbank">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,52 @@
+<div class="px-5 ">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+      <div class="col-md-auto mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <img src="../../../../assets/Imgs/mdplogo.png"  class="img-fluid" alt="logo" routerLink="/" style="cursor: pointer;width: 130px; object-fit: cover;">
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a class="nav-link px-3" routerLink="/DashBoard" [hidden]="isUser || isITAdmin || isBranchAdmin">Dash Board</a></li>
+
+        <li><a class="nav-link px-3" routerLink="/configration" [hidden]="!isITAdmin">Configuration</a></li>
+        <li><a class="nav-link px-3" routerLink="/load" [hidden]="!isCCAdmin">Load</a></li>
+        <li><a class="nav-link px-3" routerLink="/request" [hidden]="!isBranchAdmin">Request</a></li>
+        <li><a class="nav-link px-3" routerLink="/distribute" [hidden]="!isCCAdmin">Distribute</a></li>
+        <li><a class="nav-link px-3" routerLink="/transfer" [hidden]="!isCCAdmin">Transfer</a></li>
+        <li><a class="nav-link px-3" routerLink="/report" [hidden]="isITAdmin || isUser">Report</a></li>
+        <li><a class="nav-link px-3" routerLink="/destroy" [hidden]="!isBranchAdmin">Destroy</a></li>
+
+        <li><a class="nav-link px-3" routerLink="/upcomingRequests" [hidden]="!isCCAdmin">Upcoming Requests</a></li>
+        <li><a class="nav-link px-3" routerLink="/branchRequests" [hidden]="!isBranchAdmin">Branch Requests</a></li>
+        <li><a class="nav-link px-3" routerLink="/branchTransactions" [hidden]="!isBranchAdmin">Branch Transactions</a></li>
+        <li><a class="nav-link px-3" routerLink="/approvedTransactions" [hidden]="!isCCAdmin">Approved Transactions</a></li>
+        <!-- <li><a class="nav-link px-3" routerLink="/Stock-Of-Branch" [hidden]="!isBranchAdmin">Branch Stock</a></li> -->
+        <!-- <li><a class="nav-link px-3" routerLink="/event" [hidden]="!isBranchAdmin">Event</a></li> -->
+
+
+
+
+      </ul>
+
+      <div class="col-md-auto text-end">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            Welcome
+            <span class="text-success">
+              {{username}}
+            </span>
+            <p class="m-0 p-0 text-center text-primary">
+              {{userRole}}
+            </p>
+          </div>
+          <div class="ms-3">
+            <a (click)="logOut()" [hidden]="!isUserLogged" class="btn btn-danger">
+              Logout
+            </a>
+          </div>
+
+      </div>
+      </div>
+    </header>
+  </div>

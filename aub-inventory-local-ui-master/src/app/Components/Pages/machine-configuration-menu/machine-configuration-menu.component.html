@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div *ngIf="loaderService.isLoading | async"  class="loader-container">
+    <mat-spinner mode="indeterminate" style="top:50%;left: 50%;"></mat-spinner>
+</div>
+<section class="configration">
+
+    <div class="text-center mb-3">
+            <h1 class="text-center mt-3 "  style="color: #36454F;">Configuration</h1>
+            <div  class="text-center d-flex justify-content-center" style="width: 100%;" >
+                <div style="background-color: #0f85d3; height: 1px; width: 80px;"></div>
+            </div>
+    </div>
+    <div class="container d-flex  justify-content-center align-items-center" style="min-height: calc(100vh - 95.4px - 82.4px - 20px);">
+        <div class="row ">
+                <div class="card ms-5 p-3 d-flex flex-column justify-content-between" style="width: 18rem;" routerLink="/machines">
+                <img src="../../../../assets/Imgs/Printers.png" class="card-img-top d-block pt-5" alt="Branch">
+                <div class="">
+                  <h4 class="card-text text-center pb-3">All Machines  </h4>
+                </div>
+              </div>
+
+               <div class="card ms-5 p-3" style="width: 18rem;" routerLink="/assigned-machine-to-user">
+                <img src="../../../../assets/Imgs/AssignPrinterToUser.png" style="min-height:250px;" class="card-img-top" alt="Branch">
+                <div class="card-body">
+                  <h4 class="card-text text-center">Assign Machine To User  </h4>
+                </div>
+              </div>
+
+               <div class="card ms-5 p-3" style="width: 18rem;" routerLink="/Edit-Print-Config">
+                <img src="../../../../assets/Imgs/EditCard.png " class="card-img-top" alt="Branch">
+                <div class="card-body">
+                  <h4 class="card-text text-center"> Print Configuration  </h4>
+                </div>
+              </div>
+        </div>
+    </div>
+
+</section>
+

@@ -1,0 +1,127 @@
+<div>
+    <div class="d-flex mt-5 justify-content-around align-items-start">
+        <div class="me-5">
+            <label class="mb-2" style="color: #0f85d3;">Branch From</label>
+            <select class="form-select mb-3" [(ngModel)]="selectedSourceBranch" [disabled]="!isCCAdmin">
+                <option value="" selected disabled>Select Branch</option>
+                <ng-container *ngIf="isCCAdmin">
+                    <option value="All">All</option>
+                    <option *ngFor="let branch of branches">{{branch.branchName}}</option>
+                </ng-container>
+                <ng-container *ngIf="!isCCAdmin">
+                    <option >{{selectedSourceBranch}}</option>
+                </ng-container>
+            </select>
+
+            <label class="mb-2" style="color: #0f85d3;">Branch To</label>
+            <select class="form-select" [(ngModel)]="selectedDestinationBranch" [disabled]="!isCCAdmin">
+                <option value="" selected disabled>Select Branch</option>
+                <ng-container *ngIf="isCCAdmin">
+                    <option value="All">All</option>
+                    <option *ngFor="let branch of branches">{{branch.branchName}}</option>
+                </ng-container>
+                <ng-container *ngIf="!isCCAdmin">
+                    <option >{{selectedDestinationBranch}}</option>
+                </ng-container>
+            </select>
+
+        </div>
+        <div class="form-check">
+            <label class="mb-2" style="color: #0f85d3;">Status</label>
+            <div>
+                <input (change)="onCheckBoxChange('0')" class="form-check-input" type="checkbox" [value]="0" name="flexCheckDefault"
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">Confirmed</label>
+            </div>
+            <!-- <div>
+                <input (change)="onCheckBoxChange('1')" class="form-check-input" type="checkbox" [value]="1" name="flexCheckDefault"
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">Declined</label>
+            </div> -->
+            <div>
+                <input (change)="onCheckBoxChange('2')" class="form-check-input" type="checkbox" [value]="2" name="flexCheckDefault"
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">On Transfer</label>
+            </div>
+            <!-- <div>
+                <input (change)="onCheckBoxChange('3')" class="form-check-input" type="checkbox" [value]="3" name="flexCheckDefault"
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">Waiting</label>
+            </div> -->
+        </div>
+
+
+        <div>
+            <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Start date">
+                    <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <!-- <p>Selected range: {{range.value | json}}</p> -->
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <button class="btn btn-dark" (click)="searchTransactions()" [disabled]="!validSearch()">
+            <div class="d-flex align-items-center">
+                <img src="../..//../../../assets/Imgs/search2.png" class="me-1" width="20px" height="20px" style="color: white;">
+                <span>Search</span>
+            </div>
+        </button>
+    </div>
+    <div class="text-end mt-5">
+        <button class="btn btn-success" (click)="exportTransactionsToExcel()">
+            <div class="d-flex align-items-center ">
+                <img src="../../../../../assets/Imgs/download.png" class="me-1" alt="" width="20px" height="20px">
+                <span>Export To Excel</span>
+            </div>
+        </button>
+    </div>
+    <table class="table mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>#</th>
+                <th>Card Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Card Amount</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>User</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions let i = index " class="text-center">
+                <td>{{i+1}}</td>
+                <td>{{transaction.productName}}</td>
+                <td>{{transaction.source}}</td>
+                <td>{{transaction.destination}}</td>
+                <td>{{transaction.cardAmount}}</td>
+                <td>{{transaction.transactionDate|date:'MMM d, y'}}</td>
+                <td>{{transaction.transactionDate|date:'h:mm a'}}</td>
+                <td>{{transaction.userName}}</td>
+                <td>
+                    <div [ngSwitch]="transaction.transactionStatus">
+                        <div *ngSwitchCase="0">Confirmed</div>
+                        <div *ngSwitchCase="1">Declined</div>
+                        <div *ngSwitchCase="2">On Transfer</div>
+                        <div *ngSwitchCase="3">In Progress</div>
+                        <div *ngSwitchDefault></div>
+                    </div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <mat-paginator #transactionPaginator [length]="totalTransactions" [pageSize]="pageSize" [pageIndex]="pageIndex"
+         (page)="pageEvent = PaginatorEvent($event)"
+        aria-label="Select page">
+    </mat-paginator>
+</div>

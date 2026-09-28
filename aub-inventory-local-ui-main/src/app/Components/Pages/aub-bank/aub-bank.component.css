@@ -1,0 +1,50 @@
+.login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-box {
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.text-logo-bg {
+    filter: blur(2px);
+}
+
+.login-body {
+    background: rgb(211, 148, 15);
+    background: linear-gradient(90deg, rgba(211, 148, 15, 1) 0%, rgba(2, 35, 48, 1) 60%);
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-box {
+    overflow: hidden;
+}
+
+.txt-logo {
+    height: auto;
+    width: auto;
+}
+
+.login-btn {
+    background-color: #0f85d3;
+    color: white;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-control:focus {
+    border-color: #0f85d3;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #0f85d3;
+}
+

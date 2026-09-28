@@ -1,0 +1,127 @@
+th{
+    color: #fff;
+    background: #0f85d3   !important;
+}
+::ng-deep .mat-mdc-paginator {
+  background-color: #0f85d3 !important; /* Blue bar */
+  color: #fff !important;
+  border-top: 2px solid #0c6fb5;
+  font-size: 14px;
+}
+
+/* Range label (e.g., 1–10 of 100) */
+::ng-deep .mat-mdc-paginator .mat-mdc-paginator-range-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Navigation buttons */
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button {
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:hover,
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:focus {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:disabled {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Dropdown (items per page) */
+::ng-deep .mat-mdc-select-trigger {
+  color: white !important;
+  border: 1px solid #ffffff33;
+  border-radius: 6px;
+}
+
+/* The value text of the selected item in the bar */
+::ng-deep .mat-mdc-select-value-text {
+  color: white !important;
+}
+
+/* Panel (dropdown background) */
+::ng-deep .mat-mdc-select-panel {
+  background-color: #2d2d2d !important;
+  color: white !important;
+}
+
+/* Option text (default) */
+::ng-deep .mat-mdc-option {
+  color: #ddd !important;
+}
+
+/* Option on hover */
+::ng-deep .mat-mdc-option:hover {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+/* ✅ Selected option (the “5” when chosen) */
+::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+/* ✅ The inner span that actually shows the text of selected option */
+::ng-deep .mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+  color: white !important;
+}
+
+/* ✅ Focused (keyboard navigation) */
+::ng-deep .mat-mdc-option.mdc-list-item--selected:focus,
+::ng-deep .mat-mdc-option:focus {
+  background-color: #2196f3 !important;
+  color: white !important;
+}
+
+/* ======================================================
+   💬 Dialogs (if used)
+====================================================== */
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #222 !important;
+  color: white !important;
+}
+/* ======================================================
+   ✨ Fix mat-select outlines & borders (Paginator)
+====================================================== */
+
+/* Remove purple outline when focused */
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__notch {
+  border-color: white !important;   /* change purple to white */
+}
+
+/* Also make the normal (unfocused) border white or transparent */
+::ng-deep .mat-mdc-select .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select .mdc-notched-outline__notch {
+  border-color: rgba(255, 255, 255, 0.5) !important; /* soft white border */
+}
+
+/* Remove that inner thin border (the small line around the value) */
+::ng-deep .mat-mdc-select-trigger {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Optional: give it a cleaner look with a subtle white outline */
+::ng-deep .mat-mdc-select {
+  --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.5);
+  --mdc-outlined-text-field-focus-outline-color: white;
+}
+
+
+.mat-header-cell,
+.mat-cell {
+  text-align: center !important;
+  justify-content: center !important;
+}
+.mat-cell {
+  text-align: center !important;
+  justify-content: center !important;
+}

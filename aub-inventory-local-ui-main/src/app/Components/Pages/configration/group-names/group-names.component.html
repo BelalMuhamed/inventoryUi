@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<h2 style="color: #36454F;" class="text-center mt-3 mb-2">Create New Group</h2>
+<div class="justify-content-center d-flex mb-3">
+    <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+</div>
+<div class="row m-0 justify-content-between align-items-center ps-4 pe-4">
+<div class="col-md-5">
+<form [formGroup]="groupNameForm" >
+    <label class="mb-2">Select Branch </label>
+    <label style="color: red;">*</label>
+    <select class="form-select mb-3" formControlName="branchName"
+        [ngClass]="{'is-invalid':branchName?.errors?.['required'] && branchName?.touched}">
+        <option value="" disabled selected>Select Branch Name...</option>
+        <option *ngFor="let branch of branches">{{branch.branchName}}</option>
+    </select>
+
+    <label class="mb-2">Select Group </label>
+    <label style="color: red;">*</label>
+    <select class="form-select mb-3" formControlName="groupName"
+        [ngClass]="{'is-invalid':groupName?.errors?.['required'] && groupName?.touched}">
+        <option value="" disabled selected>Select Group Name...</option>
+        <option *ngFor="let name of groupNames">{{name}}</option>
+    </select>
+
+    <label class="mb-2">Select Role </label>
+    <label style="color: red;">*</label>
+    <select class="form-select mb-3" formControlName="groupType"
+        [ngClass]="{'is-invalid':groupType?.errors?.['required'] && groupType?.touched}">
+        <option value="" disabled selected>Select Group Type...</option>
+        <option *ngFor="let groupType of groupTypes">{{groupType}}</option>
+    </select>
+    <div class="text-center">
+        <button type="button" class="btn createGroupBtn text-center mb-5" (click)="addGroupName()"
+            [disabled]="groupNameForm.invalid" style="color: white;">Create Group</button>
+    </div>
+</form>
+</div>
+
+<div class="col-md-5">
+    <img src="../../../../../assets/Team work-amico.svg" alt="" class="img-fluid" style="max-height: 560px;">
+</div>
+
+</div>
+
+<div class="ps-4 pe-4">
+<h2 style="color: #36454F;" class="text-center mt-3 mb-2">Delete Group</h2>
+<div class="justify-content-center d-flex mb-3">
+    <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+</div>
+<form>
+    <label class="mb-2">Select Branch </label>
+    <label style="color: red;">*</label>
+    <select class="form-select mb-3 w-50" (change)="onBranchNameChange($event)">
+        <!-- formControlName="branchName" -->
+        <!-- [ngClass]="{'is-invalid':branchName?.errors?.['required'] && branchName?.touched}" -->
+        <option value="" disabled selected>Select Branch Name...</option>
+        <option *ngFor="let branch of branches">{{branch.branchName}}</option>
+    </select>  
+    <ng-container *ngFor="let group of groups">
+        <div>
+            <div class="row">
+         
+                <div class="col-md-2">
+                    <img class="ms-2" src="../../../../../assets/Imgs/Icons/br-icon.png" alt="branch" style="height: 30px;"> {{group.branchName}}
+
+                </div>
+                <div class="col-md-2">
+                    <img class="ms-2" src="../../../../../assets/Imgs/Icons/gr-icon.png" alt="group" style="height: 30px;"> {{group.groupName}}
+
+                </div>
+                <div class="col-md-2">
+                    <img class="ms-2" src="../../../../../assets/Imgs/Icons/rol-icon.png" alt="role" style="height: 30px;"> {{group.groupType}}
+
+                </div>
+                <div class="col-md-2">
+                    <button class="btn" (click)="deleteGroup(group.id)">
+                        <img class="ms-2" src="../../../../../assets/Imgs/trash.png" alt="role" style="height: 25px;">
+                    </button>
+                </div>
+               
+            </div>
+        </div>
+    </ng-container> 
+</form>
+
+
+</div>

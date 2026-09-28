@@ -1,0 +1,10 @@
+th{
+    color: #fff;
+    background: #0f85d3   !important;
+}
+table th:first-child{
+    border-radius:10px 0 0 10px;
+}
+table th:last-child{
+    border-radius:0 10px 10px 0;
+}

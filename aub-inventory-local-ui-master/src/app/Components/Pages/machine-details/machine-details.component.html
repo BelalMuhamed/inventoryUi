@@ -1,0 +1,182 @@
+
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <h2 *ngIf="isLoading"> {{MachineDetails.name}} Details</h2>
+
+  <form [formGroup]="editMachine" >
+
+      <!-- ip & name  -->
+    <div class="row mb-3 ">
+      <!-- Ip -->
+      <div class="col-md-6">
+        <label for="ip" class="form-label" style="color: #0f85d3;">Ip</label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="ip"
+          formControlName="ip"
+          autocomplete="ip"
+
+        />
+
+
+      </div>
+
+        <div class="col-md-6">
+        <label for="ip" class="form-label" style="color: #0f85d3;">Name</label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="name"
+          formControlName="name"
+          autocomplete="name"
+
+        />
+
+
+      </div>
+
+
+    </div>
+    <!-- model & serial number  -->
+    <div class="row mb-3">
+     <div class="col-md-6">
+        <label for="model" class="form-label" style="color: #0f85d3;">model</label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="model"
+          formControlName="model"
+          autocomplete="model"
+
+        />
+
+
+      </div>
+
+        <div class="col-md-6">
+        <label for="sn" class="form-label" style="color: #0f85d3;">Serial number</label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="sn"
+          formControlName="sn"
+          autocomplete="sn"
+
+        />
+
+
+      </div>
+
+
+    </div>
+    <!-- hooper   & rejected -->
+     <div class="row mb-3">
+
+         <div class="col-md-6">
+        <label for="hooperId" class="form-label" style="color: #0f85d3;">Hooper </label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="hooperId"
+          formControlName="hooperId"
+          autocomplete="hooperId"
+
+        />
+
+
+      </div>
+
+          <div class="col-md-6">
+              <label style="color: #0f85d3;" class="form-label"> Rejecter</label>
+                              <label style="color: red;">*</label>
+              <input
+              readonly
+                type="text"
+                class="form-control bg-light"
+                id="rejectedId"
+                formControlName="rejectedId"
+                autocomplete="rejectedId"
+
+              />
+
+
+            </div>
+
+
+
+
+
+    </div>
+    <!-- port &  branch  -->
+    <div class="row mb-3">
+
+         <div class="col-md-6">
+        <label for="feederId" class="form-label" style="color: #0f85d3;">feederId</label>
+            <label style="color: red;">*</label>
+        <input
+        readonly
+          type="text"
+          class="form-control bg-light"
+          id="name"
+          formControlName="feederId"
+          autocomplete="feederId"
+
+        />
+
+
+      </div>
+
+          <div class="col-md-6">
+              <label style="color: #0f85d3;" class="form-label"> Port</label>
+                              <label style="color: red;">*</label>
+              <input
+              readonly
+                type="text"
+                class="form-control bg-light"
+                id="port"
+                formControlName="port"
+                autocomplete="port"
+
+              />
+
+
+            </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+     <div style="width: 10%;" >
+       <div class="header-buttons">
+
+
+       <a routerLink="/machines" class="add-button text-decoration-none">
+        <i class="fa-solid fa-backward-fast pe-3"></i>
+    Back
+</a>
+
+      </div>
+     </div>
+
+
+  </form>
+
+</div>

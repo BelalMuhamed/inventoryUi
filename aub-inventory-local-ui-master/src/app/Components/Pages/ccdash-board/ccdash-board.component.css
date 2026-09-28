@@ -1,0 +1,273 @@
+.example-card {
+  max-width: 400px;
+  margin: 20px;
+}
+
+.example-header-image {
+  background-image: url('https://via.placeholder.com/40');
+  background-size: cover;
+}
+
+.colornavy {
+  color: navy;
+}
+
+.dis {
+  display: none;
+}
+
+/* new */
+.nav-tabs {
+  border-bottom: none !important;
+}
+
+body.berry-dark .nav-tabs .nav-link,
+body.berry-dark .tab-content {
+  box-shadow: none !important;
+  background: none !important;
+}
+.primarycard
+{
+  background-color: rgb(84, 43, 166);
+}
+.secondarycard
+{
+  background-color: rgb(28, 116, 217);
+}
+.Lightcard
+{
+  background-color: transparent;
+}
+.secondary-round
+{
+  background-color: #4527a0;
+}
+.smallcard
+{
+  border-radius: 8px;
+  background-color: rgb(71, 37, 143);
+}
+.smallSecondarycard
+{
+  border-radius: 8px;
+  background-color: rgb(24, 100, 186);
+}
+.smalllightcard
+{
+  border-radius: 8px;
+  background-color: rgb(255, 248, 224);
+}
+.earning-card .round.primary-round {
+  background: #1565c0;
+}
+
+.total-income-card .avatar {
+  background: #1565c0;
+}
+ .circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+ .circle.big {
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  right: -50px;
+}
+
+ .circle.small {
+  width: 100px;
+  height: 100px;
+  bottom: -30px;
+  right: 30px;
+}
+.orangeColor
+{
+  color: rgb(255, 193, 7);
+}
+ .lightcircle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgb(255, 244, 209);
+}
+
+ .lightcircle.big {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  right: -50px;
+}
+
+ .lightcircle.small {
+  width: 50px;
+  height: 50px;
+  bottom: -30px;
+  right: 30px;
+}
+.PageBgColor
+{
+  background-color: rgb(235, 240, 245);
+}
+.custom-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+
+}
+
+.print-footer
+{
+  display: none;
+
+}
+.custom-selectshadow {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 0;
+}
+
+.BorderBox
+{
+box-sizing: border-box;
+}
+.w-40
+{
+width: 48%;
+}
+ .page-break {
+   display: none;
+  }
+@media print {
+ body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-size: 12px; /* خط أصغر شوية */
+  }
+
+  .container-fluid {
+    padding: 10px !important; /* يقلل المسافات */
+  }
+
+
+   .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+
+  .inprint
+  {
+  flex: 0 0 auto !important;
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+ .smallcardInPrint
+ {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 10%;
+
+ }
+ .inprintsmallcard
+ {
+  width: 45%;
+  margin: 0px !important;
+  padding: 0px !important;
+ }
+.marginingendpag
+{
+  margin-bottom: 5%;
+}
+
+  .card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    height: 100% !important;
+  }
+
+
+  .fs-1 { font-size: 1.5rem !important; }
+  .fs-6 { font-size: 0.9rem !important; }
+  .fw-medium { font-weight: 600 !important; }
+
+  .primarycard,
+  .secondarycard,
+  .Lightcard,
+  .smallcard,
+  .smallSecondarycard,
+  .smalllightcard,
+  .PageBgColor {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+    display: block;
+    height: 0;
+  }
+
+.printcardAnalysis
+{
+  width: 100%;
+  height: 90vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.pt{
+padding-top:90%;
+
+}
+.dnone{
+  display: none;
+}
+.marginForPrint
+{
+margin: 0px;
+padding: 0pc;
+
+}
+.no-page-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Reduce margins and padding to fit more on one page */
+  .last-custom-shadow,
+  .cp-5 {
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+
+  /* Optional: shrink charts slightly */
+  .custom-canvas {
+    max-height: 300px;
+  }
+ @page {
+    margin: 10mm;
+  }
+
+  /* Position your own footer */
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+  }
+
+}

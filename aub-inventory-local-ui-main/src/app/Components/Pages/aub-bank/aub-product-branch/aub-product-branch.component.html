@@ -1,0 +1,42 @@
+<div class="product-branch-body">
+    <h1 class="mb-5 text-center">Product Configuration</h1>
+    <div class="row p-3 mb-5 ">
+        <div class="justify-content-between align-items-end">
+            <div class="row align-items-end">
+                <div class="col ">
+                    <label class="mb-1 fw-bolder">Edit Product</label>
+                    <select class="form-select w-75" >
+                        <option *ngFor="let product of products">{{product}}</option>
+                    </select>
+                </div>
+                <div class="circle-container col d-none d-lg-block">
+                    <div ><img src="../../../../assets/Imgs/credit-card.jpg" class="circle-content" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col mt-3 text-center">
+        <button (click)="addProduct()" class="btn btn-primary col-3">Add Product</button>
+    </div>
+    <hr class="mb-5">
+    <h1 class="mb-3 text-center">Branch Configuration</h1>
+    <div class="row p-3 mb-5 ">
+        <div class="justify-content-between align-items-end">
+            <div class="row align-items-end">
+                <div class="col ">
+                    <label class="mb-1 fw-bolder">Edit Branch</label>
+                    <select class="form-select w-75">
+                        <option *ngFor="let branch of branches">{{branch}}</option>
+                    </select>
+                </div>
+                <div class="circle-container-branch col d-none d-lg-block">
+                    <div ><img src="../../../../assets/Imgs/branch.webp" class="circle-content" alt=""></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col mt-3 text-center">
+        <button class="btn btn-success col-3" (click)="addbranch()">Add Branch</button>
+    </div>
+</div>

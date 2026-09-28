@@ -1,0 +1,212 @@
+
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <h2>Add new Machine Configuration</h2>
+
+  <form [formGroup]="addMachine" (ngSubmit)="AddMachine()">
+
+      <!-- ip & name  -->
+    <div class="row mb-3 ">
+      <!-- Ip -->
+       <div class="col-md-6">
+  <label for="ip" class="form-label" style="color: #0f85d3;">IP</label>
+  <label style="color: red;">*</label>
+  <input
+  type="text"
+  class="form-control"
+  placeholder="___.___.___.___"
+  formControlName="ip"
+  mask="0*.0*.0*.0*"
+/>
+
+
+  <div *ngIf="addMachine.get('ip')?.errors && addMachine.get('ip')?.touched" class="invalid-feedback">
+    <div *ngIf="addMachine.get('ip')?.errors?.['required']">IP is required.</div>
+    <div *ngIf="addMachine.get('ip')?.errors?.['pattern']">Invalid IP address format.</div>
+  </div>
+      </div>
+
+
+        <!-- name -->
+      <div class="col-md-6">
+        <label for="ip" class="form-label" style="color: #0f85d3;">Name</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+          autocomplete="name"
+          [ngClass]="{
+            'is-invalid':
+              addMachine.get('name')?.invalid &&
+              addMachine.get('name')?.touched
+          }"
+        />
+
+        <div *ngIf="addMachine.get('name')?.invalid &&addMachine.get('name')?.touched" class="invalid-feedback">name is required</div>
+
+      </div>
+
+
+    </div>
+    <!-- model & serial number  -->
+    <div class="row mb-3">
+     <div class="col-md-6">
+        <label for="model" class="form-label" style="color: #0f85d3;">model</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          formControlName="model"
+          autocomplete="model"
+          [ngClass]="{
+            'is-invalid':
+              addMachine.get('model')?.invalid &&
+              addMachine.get('model')?.touched
+          }"
+        />
+
+        <div *ngIf="addMachine.get('model')?.invalid &&addMachine.get('model')?.touched" class="invalid-feedback">model is required</div>
+
+      </div>
+
+        <div class="col-md-6">
+        <label for="sn" class="form-label" style="color: #0f85d3;">Serial number</label>
+            <label style="color: red;">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sn"
+          formControlName="sn"
+          autocomplete="sn"
+          [ngClass]="{
+            'is-invalid':
+              addMachine.get('sn')?.invalid &&
+              addMachine.get('sn')?.touched
+          }"
+        />
+
+        <div *ngIf="addMachine.get('sn')?.invalid &&addMachine.get('sn')?.touched" class="invalid-feedback">Serial Number is required</div>
+
+      </div>
+
+
+    </div>
+    <!-- hooper  & feeder & rejected -->
+    <div class="row mb-3 ">
+        <!-- feederId -->
+      <div class="col-md-4 " >
+  <label for="feederId" class="form-label" style="color: #0f85d3;">
+    Feeder  <span style="color: red;">*</span>
+  </label>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="feederId" [value]=0 id="feederId0" />
+    <label class="form-check-label" for="feederId0">0</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="feederId" [value]=1 id="feederId1" />
+    <label class="form-check-label" for="feederId1">1</label>
+  </div>
+
+  <div *ngIf="addMachine.get('feederId')?.invalid && addMachine.get('feederId')?.touched" class="invalid-feedback d-block">
+    Feeder is required!
+  </div>
+      </div>
+
+      <!-- hooperId -->
+   <div class="col-md-4 " >
+  <label for="hooperId" class="form-label" style="color: #0f85d3;">
+    Hooper  <span style="color: red;">*</span>
+  </label>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="hooperId" [value]=0 id="hooperId" />
+    <label class="form-check-label" for="hooperId">0</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="hooperId" [value]=1 id="hooperId" />
+    <label class="form-check-label" for="hooperId">1</label>
+  </div>
+
+  <div *ngIf="addMachine.get('hooperId')?.invalid && addMachine.get('hooperId')?.touched" class="invalid-feedback d-block">
+    Feeder is required!
+  </div>
+      </div>
+
+
+       <div class="col-md-4 " >
+  <label for="rejectedId" class="form-label" style="color: #0f85d3;">
+    rejecter <span style="color: red;">*</span>
+  </label>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="rejectedId" [value]=0 id="rejectedId" />
+    <label class="form-check-label" for="rejectedId">0</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" formControlName="rejectedId" [value]=1 id="rejectedId" />
+    <label class="form-check-label" for="rejectedId">1</label>
+  </div>
+
+  <div *ngIf="addMachine.get('rejectedId')?.invalid && addMachine.get('rejectedId')?.touched" class="invalid-feedback d-block">
+    jejecter is required!
+  </div>
+      </div>
+   </div>
+    <!-- port &  branch  -->
+    <div class="row mb-3">
+          <div class="col-md-6">
+              <label style="color: #0f85d3;" class="form-label"> Port</label>
+                              <label style="color: red;">*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="port"
+                formControlName="port"
+                autocomplete="port"
+                [ngClass]="{
+                  'is-invalid':
+                    addMachine.get('port')?.invalid &&
+                    addMachine.get('port')?.touched
+                }"
+              />
+
+              <div *ngIf="addMachine.get('port')?.invalid &&addMachine.get('port')?.touched" class="invalid-feedback">port is required</div>
+
+            </div>
+
+
+              <div class="col-md-6">
+            <label style="color: #0f85d3;" class="form-label"> Select Branch</label>
+                              <label style="color: red;">*</label>
+                              <select class="form-select mb-3" formControlName = "branchId"
+                              [class.is-invalid] = "branchId?.invalid && branchId?.touched">
+                                  <option value="" disabled selected>Select Branch ...</option>
+                                  <option [value]="branch.id"  *ngFor="let branch of branches" >{{branch.branchName}}</option>
+
+                              </select>
+
+              <div *ngIf="addMachine.get('branchId')?.invalid &&addMachine.get('branchId')?.touched" class="invalid-feedback">Branch  is required</div>
+
+            </div>
+
+    </div>
+
+
+
+
+     <div class="text-center">
+                            <button [disabled]="!addMachine.valid" class="btn mt-3 px-5 login-btn">Add </button>
+                        </div>
+
+
+  </form>
+
+</div>

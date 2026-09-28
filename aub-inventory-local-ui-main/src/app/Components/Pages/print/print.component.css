@@ -1,0 +1,45 @@
+section {
+    min-height: calc(100vh - 95.4px);
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+}
+
+.draw-card{
+    width: 400px;
+    height: 200px;
+    background-color: #0f85d3;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.cardholdername {
+    position: absolute;
+    bottom: 10px;
+    left:10px;
+}
+
+.logo{
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+
+.cardholdername span {
+    color:white;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+
+
+
+.underline-input:focus {
+  border-bottom: 2px solid #fff !important ;
+}
+

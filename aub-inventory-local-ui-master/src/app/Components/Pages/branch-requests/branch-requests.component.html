@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-center align-items-center container">
+    <div style="width: 100%;">
+        <h2 style="color: #36454F;" class="text-center mt-3 mb-2">Your Card Requests</h2>
+        <div class="justify-content-center d-flex mb-3">
+            <div style="height: 1px;width: 100px;background-color: #0f85d3;"></div>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Card Type</th>
+                    <th>Card Amount</th>
+                    <th>Branch</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>User Requested</th>
+                    <th>Card Center User </th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let request of requestsForBranch let i = index "class="text-center">
+                    <td>{{i+1}}</td>
+                    <td>{{request.cardsType}}</td>
+                    <td>{{request.cardAmount}}</td>
+                    <td>{{request.branchNameRequesting}}</td>
+                    <td>{{request?.dateTime|date:'MMM d, y'}}</td>
+                    <td>{{request?.dateTime|date:'h:mm a'}}</td>
+                    <td>{{request.userNameRequesting}}</td>
+                    <td>{{request.cardCenterUserName}}</td>
+                    <td>
+                        <div [ngSwitch]="request.status">
+                            <div *ngSwitchCase="0">Confirmed</div>
+                            <div *ngSwitchCase="1">Declined</div>
+                            <div *ngSwitchCase="2">On Transfer</div>
+                            <div *ngSwitchCase="3">In Progress</div>
+                            <div *ngSwitchDefault></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

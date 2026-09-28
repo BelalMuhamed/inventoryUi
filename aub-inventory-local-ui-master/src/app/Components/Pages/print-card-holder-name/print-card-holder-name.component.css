@@ -1,0 +1,161 @@
+
+.MachineCard {
+  width: 190px;
+  height: 254px;
+  background: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 3px 1px #00000088;
+  cursor: pointer;
+}
+
+.MachineCard .content {
+  border-radius: 5px;
+  background: #171717;
+  width: 186px;
+  height: 250px;
+  z-index: 1;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content::before {
+  opacity: 0;
+  transition: opacity 300ms;
+  content: " ";
+  display: block;
+  background: white;
+  width: 5px;
+  height: 50px;
+  position: absolute;
+  filter: blur(50px);
+  overflow: hidden;
+}
+
+.MachineCard:hover .content::before {
+  opacity: 1;
+}
+
+.MachineCard::before {
+  opacity: 0;
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 360px;
+  background: linear-gradient(#ff2288, #387ef0);
+  transition: opacity 300ms;
+  animation: rotation_9018 8000ms infinite linear;
+  animation-play-state: paused;
+}
+
+.MachineCard:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.MachineCard::after {
+  position: absolute;
+  content: " ";
+  display: block;
+
+  background: #17171733;
+  backdrop-filter: blur(50px);
+}
+.cardMDP
+{
+  width: 40%;
+}
+.login-btn {
+    background-color: #0f85d3;
+    color: white;
+}
+.login-btn:hover {
+    background-color: #0f85d3;
+    color: white;
+}
+.form-control-plaintext.is-invalid {
+  border-bottom: 2px solid #dc3545 !important;
+}
+.pointer
+{
+  cursor: pointer;
+}
+
+input::placeholder {
+  color : white;
+}
+.imgFixedwidth
+{
+  width: 500px;
+}
+@keyframes rotation_9018 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.credit-card {
+  width: 500px;
+  height: 314px;
+  display: block;
+  color: white;
+
+}
+
+.overlay-input {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+  width: 63%;
+   border: none;
+  border-bottom: white 2px solid transparent;
+  outline: none;
+}
+input:focus {
+  border-bottom: 2px solid white; /* visible when focused */
+}
+input::placeholder {
+  color: gray;   /* Change this to your preferred color */
+  opacity: 1;    /* Make sure it’s fully visible */
+}
+.color-picker {
+  display: block;
+  margin-top: 10px;
+}
+.component-wrapper {
+  position: relative;
+}
+
+.loading-overlay {
+  position: fixed;   /* cover the whole screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* higher than navbar, table, etc. */
+}
+.wide-letters {
+  letter-spacing: 11px;
+}

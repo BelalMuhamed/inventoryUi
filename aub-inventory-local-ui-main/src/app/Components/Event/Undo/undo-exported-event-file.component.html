@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+
+<h3 class="text-center mt-3">
+    <img src="../../../../assets/Imgs/return.png" alt="" height="50px">
+    Undo event file for 
+    <span class="text-warning">
+        {{selectedBranch}}
+    </span>
+</h3>
+<div class="text-end me-4">
+    <a routerLink="/Export">Do you need to export?</a>
+</div>
+<div *ngIf="dataSource?.data?.length === 0" class="text-center">
+    <img src="../../../../assets/Imgs/No data.svg" alt="No data available" style="width: 600px; height: auto;" />
+</div>
+<div class="p-3 d-flex justify-content-center container-fluid" *ngIf="dataSource?.data?.length > 0" style="min-height: 500px;">
+    <div class="card container-fluid p-0">
+        <table matSort mat-table [dataSource]="dataSource" class="table-desponsive table-none-scroll" >
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <ng-container matColumnDef="file name">
+                <th mat-header-cell *matHeaderCellDef style="font-weight: bold;background-color: #f2f2f2;">
+                    File Name
+                </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <img src="../../../../assets/Imgs/file icon.png" alt="file icon" height="30px">
+                    {{element.fileName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="event date">
+                <th mat-header-cell *matHeaderCellDef style="font-weight: bold;background-color: #f2f2f2;"> File Date
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <img src="../../../../assets/Imgs/event date.png" alt="file icon" height="30px">
+
+                    {{element.eventFileDate | date:'medium' }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="branch name">
+                <th mat-header-cell *matHeaderCellDef style="font-weight: bold;background-color: #f2f2f2;"> 
+                    Branch Name
+                </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <img src="../../../../assets/Imgs/event branch.png" alt="file icon" height="30px">
+
+                    {{element.branchName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef style="font-weight: bold;background-color: #f2f2f2;"> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button class="ms-3" mat-raised-button color="warn"
+                        (click)="undoEventFile(element.fileName , element.branchName)">
+                        <img src="../../../../assets/Imgs/undo.png" alt="" height="20px">
+                        Undo
+                    </button>
+                </td>
+            </ng-container>
+
+
+        </table>
+    </div>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

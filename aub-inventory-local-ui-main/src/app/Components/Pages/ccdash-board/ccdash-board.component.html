@@ -1,0 +1,414 @@
+ <app-navbar class="dnone"></app-navbar>
+ <div class="container pt-3">
+<button (click)="printPage()" class="btn btn-primary mb-3 dnone"  [disabled]="!pageLoaded">🖨️ Print Dashboard</button>
+
+ </div>
+
+
+<div class="row container m-auto p-5 PageBgColor mt-4">
+
+  <div class="col-xl-4 col-md-4 inprint ">
+    <div class="card  earning-card primarycard text-white overflow-hidden border-0 custom-shadow">
+
+
+   <div class="card-body  p-4 position-relative overflow-hidden">
+
+  <span class="circle big"></span>
+  <span class="circle small"></span>
+
+  <div class="row">
+    <div class="p-2 w-auto">
+      <mat-icon class="m-1" style="color:yellow;">check_circle</mat-icon>
+
+      <!-- <i class="fa-solid fa-credit-card fs-3 p-2"></i> -->
+    </div>
+  </div>
+
+  <div>
+    <span class="text-white fs-1 fw-medium my-2 ">
+      {{  CurrentYearPrecentageObj?.totalSucceededCards ?? 0 }}
+    </span>
+
+    <span *ngIf="( CurrentYearPrecentageObj?.totalSucceededCards ?? 0) > ( MaximumYearPrecentageObj?.totalSucceededCards ?? 0)"
+
+      class="text-white fs-1 fw-medium my-2 opacity-50"
+    >
+      <i class="fa-solid fa-arrow-trend-up"></i>
+    </span>
+
+    <span
+      *ngIf="( CurrentYearPrecentageObj?.totalSucceededCards ?? 0) < ( MaximumYearPrecentageObj?.totalSucceededCards ?? 0)"
+      class="text-white fs-1 fw-medium my-2 opacity-50"
+    >
+      <i class="fa-solid fa-arrow-trend-down"></i>
+    </span>
+    <span
+      *ngIf="( CurrentYearPrecentageObj?.totalSucceededCards ?? 0) == ( MaximumYearPrecentageObj?.totalSucceededCards ?? 0)"
+      class="text-white fs-1 fw-medium my-2 opacity-50"
+    >
+
+
+<mat-icon style="transform: scaleY(0.7);margin-top:7px">leaderboard</mat-icon>
+    </span>
+  </div>
+
+  <div>
+    <p class="mb-0 opacity-50">Total success Printed Cards in {{currentYear }}</p>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+  <div class="col-xl-4 col-md-6 inprint ">
+    <div class="card earning-card secondarycard text-white overflow-hidden border-0 custom-shadow">
+
+
+   <div class="card-body p-4 position-relative overflow-hidden">
+
+  <span class="circle big"></span>
+  <span class="circle small"></span>
+
+  <div class="row">
+
+
+  </div>
+  <div class="d-flex justify-content-between">
+      <div>
+        <div class="w-auto p-2">
+            <i class="fa-solid fa-credit-card fs-3 p-2"></i>
+
+    </div>
+        <div>
+          <span class="text-white fs-1 fw-medium my-5">
+            {{  TotalStockCards?? 0 }}
+          </span>
+
+
+        </div>
+
+        <div>
+          <p class="mb-0 opacity-50">Total Cards Stock</p>
+        </div>
+        </div>
+
+      <div>
+        <div class="w-auto p-2">
+            <i class="fa-solid fa-circle-pause fs-3 p-2 text-danger"></i>
+
+    </div>
+        <div>
+        <span class="text-white fs-1 fw-medium my-5">
+          {{  onHoldCards }}
+        </span>
+
+
+      </div>
+
+      <div>
+        <p class="mb-0 opacity-50 ">On Hold Cards </p>
+      </div>
+      </div>
+  </div>
+
+</div>
+
+
+    </div>
+  </div>
+
+  <div class="col-xl-4 col-md-12  p-0  smallcardInPrint">
+     <div class="inprintsmallcard card earning-card secondarycard text-white overflow-hidden bs-border-box mb-3 border-0 custom-shadow">
+
+
+   <div class="card-body  position-relative overflow-hidden ">
+
+  <span class="circle big"></span>
+  <span class="circle small"></span>
+
+  <div class="row d-flex align-items-center ">
+    <div class="smallSecondarycard w-auto">
+           <i class="fa-solid fa-building fs-5 py-1"></i>
+
+    </div>
+
+     <div class="d-flex flex-column justify-content-center align-items-center w-auto">
+
+      <div>
+        <span class="text-white fs-6 fw-medium ">
+          {{  TotalBranches }}
+        </span>
+
+
+      </div>
+
+      <div>
+        <p class="mb-0 opacity-50">Total Branches</p>
+      </div>
+  </div>
+  </div>
+
+</div>
+
+
+    </div>
+
+    <div class=" inprintsmallcard card earning-card Lightcard text-black overflow-hidden bs-border-box border-0 border-0  bg-white custom-shadow">
+
+
+   <div class="card-body  position-relative overflow-hidden ">
+
+  <span class="lightcircle big"></span>
+  <span class="lightcircle small"></span>
+
+  <div class="row d-flex align-items-center ">
+    <div class="smalllightcard w-auto">
+           <i class="fa-solid fa-users fs-5 py-1 orangeColor"></i>
+
+    </div>
+
+     <div class="d-flex flex-column justify-content-center align-items-center w-auto">
+
+      <div>
+        <span class="text-black fs-6 fw-medium ">
+          {{  usersCount }}
+        </span>
+
+
+      </div>
+
+      <div>
+        <p class="mb-0 opacity-50">Total Users</p>
+      </div>
+  </div>
+  </div>
+
+</div>
+
+
+  </div>
+  </div>
+
+
+<!-- stock chart-->
+  <div class=" col-xl-8 col-md-12 mt-5 bg-white  custom-shadow d-flex justify-content-center align-items-center flex-column" >
+<div class="mb-5 ">
+  <button class="border-0 mb-3 bg-transparent fs-3  fw-bold" >
+    <i  class="fa-solid fa-chart-simple  text-info"></i>
+    <span class="ps-3  text-info">Product Stock</span>
+
+  </button>
+</div>
+
+
+<div style="width: 100%;"   >
+  <canvas  baseChart class="w-100"
+          [data]="StockbarChartData"
+          [options]="StockbarChartOptions"
+          (chartClick)="onBarClick($event)"
+         type="bar" >
+  </canvas>
+
+</div>
+
+  </div>
+
+<!--product stock details -->
+  <div class="col-xl-4 col-md-12 mt-5 printcardAnalysis ">
+    <div class="card w-100 custom-shadow">
+      <div class="card-body">
+        <div class="d-flex mb-3 align-items-center justify-content-between w-100  ">
+          <div >
+            <h4 class="m-0 text-info"  *ngIf=" selectedStockProduct != null ">
+              <i class="fa-solid fa-chart-pie"></i>
+              {{ selectedStockProduct.productName}} Stock Details</h4>
+          </div>
+          <div *ngIf=" selectedStockProduct != null " class="text-info" >
+            {{ selectedStockProduct.quantity}}
+            <i class="fa-solid fa-credit-card "></i>
+
+          </div>
+        </div>
+<div style="width: 90%;">
+  <canvas baseChart
+          [data]="waveChartData"
+          [options]="waveChartOptions"
+          type="pie">
+  </canvas>
+</div>
+
+        <ul class="list-group list-group-flush" *ngFor="let item of ProductStockDetails">
+          <li class="list-group-item px-0 ">
+            <div class="row align-items-start">
+              <div class="col">
+                <h5 class="mb-0 fw-bold">{{ item.branchName }}</h5>
+                <small [ngClass]="item.quantity === 0 ? 'text-danger' : 'text-success'" >{{ (item.quantity/ selectedStockProduct.quantity)*100| number:'1.2-2'  }} %</small>
+              </div>
+              <div class="col-auto">
+                <h4 class="mb-0 fw-bold "  [ngClass]="item.quantity === 0 ? 'text-danger' : 'text-success'">
+                 {{ item.quantity }}
+                  <i class="fa-solid fa-credit-card" ></i>
+                </h4>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+  </div>
+<div class="page-break"></div>
+
+  <div class="row printcardAnalysis pt">
+  <div class="col-12 mt-5 custom-shadow bg-white p-5 d-flex justify-content-center align-items-center flex-column">
+    <div><h2 class="text-info fs-3 fw-bold"><i class="fa-solid fa-chart-column me-2 "></i> Printed Cards Production Analysis</h2></div>
+    <div class="w-100">
+    <div  class="d-flex justify-content-end">
+       <select  (change)="onSelectChange($event)"  class="p-2 m-3 border-0 custom-selectshadow rounded">
+      <option value="years">Years</option>
+      <option value="months">Months</option>
+      <option value="days">Days</option>
+    </select>
+    </div>
+    <div style="width: 100%;"   >
+  <div class="mat-elevation-z4 p-4 rounded-lg">
+  <canvas baseChart  *ngIf=" selectedPeriod"
+    [data]="CardsbarChartDataReport"
+    [options]="CardsbarChartReportOptions"
+    chartType="bar" class="w-100"
+    (chartClick)="onBarChartClick($event)">
+  </canvas>
+<div *ngIf=" selectedPeriod ==''"><span class="text-danger p-4 text-center">there aren't any cards printed  !</span></div>
+
+
+</div>
+</div>
+</div>
+  </div>
+  </div>
+  <div class="page-break"></div>
+
+    <div class="mt-5 text-center custom-shadow bg-white  py-3 text-info " *ngIf=" selectedPeriod">
+      <h2 *ngIf="selectedRange=='years'"> Printed Cards Analysis For {{ selectedPeriod}}</h2>
+      <h2 *ngIf="selectedRange=='months'">Printed Cards Analysis For {{ selectedPeriod}}-{{currentYear}}</h2>
+      <h2 *ngIf="selectedRange=='days'">Printed Cards Analysis For {{ selectedPeriod|date:'dd' }}-{{ today | date:'MMMM' }}-{{currentYear}}</h2>
+    </div>
+
+  <div class=" d-flex  justify-content-between align-items-center mt-5 flex-column no-page-break "  *ngIf=" selectedPeriod">
+      <div class="w-100  p-5 bg-white custom-shadow   last-custom-shadow cp-5">
+        <h3 class="text-center pt-3 mb-5 text-success
+         ">Success Cards <i class="fa-solid fa-thumbs-up ps-2"></i></h3>
+         <div class="d-flex justify-content-around align-items-center">
+          <div class="w-40 custom-shadow p-4 last-custom-shadow ">
+            <h3 class="text-center p-0 m-0 text-info">Per Branches <i class="fa-solid fa-landmark ps-2"></i></h3>
+      <canvas
+        baseChart
+          [data]="{ labels: pieSuccesscardsChartLabels, datasets: pieSuccesscardsChartDatasets}"
+          [type]="pieSuccesscardsChartType"
+          [options]="pieSuccesscardsChartOptions" class="custom-canvas">
+        </canvas>
+</div>
+
+<div class="w-40  custom-shadow p-4 last-custom-shadow ">
+  <h3 class="text-center p-0 m-0 text-info">Per Products<i class="fa-solid fa-credit-card ps-2"></i></h3>
+         <canvas
+         baseChart
+          [data]="{ labels: pieSuccesscardsPerProductChartLabels, datasets: pieSuccesscardsPerProductChartDatasets}"
+          [type]="pieSuccesscardsChartType"
+          [options]="pieSuccesscardsChartOptions" class="custom-canvas">
+        </canvas>
+        </div>
+        </div>
+      </div>
+
+       <div class="w-100  p-5 bg-white custom-shadow  mt-4 last-custom-shadow cp-5 ">
+        <h3 class="text-center pt-3 mb-5 text-danger
+         ">Damage Cards <i class="fa-solid fa-triangle-exclamation ps-2"></i></h3>
+         <div class="d-flex justify-content-around align-items-center">
+          <div class="w-40 custom-shadow p-4 last-custom-shadow">
+            <h3 class="text-center p-0 m-0 text-info">Per Branches<i class="fa-solid fa-landmark ps-2"></i></h3>
+     <canvas
+          baseChart
+          [data]="{ labels: pieDamagedcardsChartLabels, datasets: pieDamagedcardsChartDatasets}"
+          [type]="pieDamagedcardsChartType"
+          [options]="pieDamagedcardsChartOptions"class="custom-canvas">
+        </canvas>
+</div>
+<div class="w-40  custom-shadow p-4 last-custom-shadow ">
+  <h3 class="text-center p-0 m-0 text-info">Per Products<i class="fa-solid fa-credit-card ps-2"></i></h3>
+         <canvas
+         baseChart
+          [data]="{ labels: pieDamagedcardsPerProductChartLabels, datasets: pieDamagedcardsPerProductChartDatasets}"
+          [type]="pieDamagedcardsPerProductChartType"
+          [options]="pieDamagedcardsPerProductccesscardsChartOptions" class="custom-canvas">
+        </canvas >
+        </div>
+        </div>
+      </div>
+
+  </div>
+<footer class="print-footer">
+  Created by MDP Development Team ©
+</footer>
+
+
+
+
+
+<!-- <div style=" width:70%;"*ngIf="barChartData.datasets.length" class="d-flex justify-content-center align-items-center container mt-5" >
+  <canvas baseChart
+    [data]="barChartData"
+    [options]="barChartOptions"
+    [type]="barChartType">
+  </canvas>
+</div>
+<hr class="m-5">
+<div class="container mt-4">
+  <h1 class="text-end" style="color:black;"> <button class="border-0 bg-transparent" (click)="togglechar()" > <img src="../../../../assets/Imgs/pie&bar.png" class="w-50"> </button></h1>
+  <div class="d-flex flex-wrap justify-content-center align-items-start gap-4">
+    <div *ngFor="let product of Products" class="mt-5 text-center colornavy" style="width: 300px;">
+
+      <h2>{{ product.productName }} </h2>
+
+
+     <div style="position: relative; height: 250px; width: 100%;">
+  <ng-container *ngIf="chartDataByProductId[product.id]; else loading">
+    <ng-container *ngIf="chartDataByProductId[product.id].labels.length > 0; else noData">
+      <canvas
+      *ngIf="ischar"
+        baseChart
+        [data]="{
+          labels: chartDataByProductId[product.id].labels,
+          datasets: [{ data: chartDataByProductId[product.id].data }]
+        }"
+        [type]="pieChartType"
+        [options]="chartOptions">
+      </canvas>
+
+       <canvas baseChart
+    [data]="{
+          labels: chartDataByProductId[product.id].labels,
+          datasets: [{ data: chartDataByProductId[product.id].data }]
+        }"
+    [options]="barChartOptionsforProduct"
+    [type]="barChartType" class="mt-5" *ngIf="!ischar">
+  </canvas>
+
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <p> loading data ...</p>
+  </ng-template>
+
+  <ng-template #noData>
+    <p class="text-danger">There isn't any stock for this product! </p>
+  </ng-template>
+</div>
+
+
+      <p *ngIf="!chartDataByProductId[product.id]">Loading chart...</p>
+    </div>
+  </div>
+</div> -->

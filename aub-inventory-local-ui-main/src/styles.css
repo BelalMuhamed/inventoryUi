@@ -1,0 +1,251 @@
+/* ======================================================
+   🌟 Global Layout & Base Styles
+====================================================== */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Loading overlay */
+.loader-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 50;
+}
+
+/* Loading spinner overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+/* Table container */
+.table-container {
+  position: relative;
+  padding: 20px;
+}
+
+/* ======================================================
+   🧾 Angular Material Table Styles
+====================================================== */
+
+/* Table structure */
+.mat-mdc-table {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Header row & cells */
+.mat-mdc-header-row {
+  background-color: #0f85d3 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.mat-mdc-header-cell {
+  color: #fff !important;
+  font-size: 14px !important;
+  padding: 12px !important;
+}
+
+/* Data cells & hover */
+.mat-mdc-cell {
+  border-bottom: 1px solid #ddd !important;
+  padding: 12px !important;
+  font-size: 13px !important;
+  color: black;
+}
+
+.mat-mdc-row {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.mat-mdc-row:hover {
+  background-color: #f5f5f5 !important;
+}
+
+/* Images & actions */
+.table-image {
+  width: 60px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* ======================================================
+   📄 Angular Material Paginator (Dark + Blue Theme)
+====================================================== */
+
+/* Paginator bar */
+::ng-deep .mat-mdc-paginator {
+  background-color: #0f85d3 !important; /* Blue bar */
+  color: #fff !important;
+  border-top: 2px solid #0c6fb5;
+  font-size: 14px;
+}
+
+/* Range label (e.g., 1–10 of 100) */
+::ng-deep .mat-mdc-paginator .mat-mdc-paginator-range-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Navigation buttons */
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button {
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:hover,
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:focus {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-icon-button:disabled {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Dropdown (items per page) */
+::ng-deep .mat-mdc-select-trigger {
+  color: white !important;
+  border: 1px solid #ffffff33;
+  border-radius: 6px;
+}
+
+/* The value text of the selected item in the bar */
+::ng-deep .mat-mdc-select-value-text {
+  color: white !important;
+}
+
+/* Panel (dropdown background) */
+::ng-deep .mat-mdc-select-panel {
+  background-color: #2d2d2d !important;
+  color: white !important;
+}
+
+/* Option text (default) */
+::ng-deep .mat-mdc-option {
+  color: #ddd !important;
+}
+
+/* Option on hover */
+::ng-deep .mat-mdc-option:hover {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+/* ✅ Selected option (the “5” when chosen) */
+::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background-color: #1976d2 !important;
+  color: white !important;
+}
+
+/* ✅ The inner span that actually shows the text of selected option */
+::ng-deep .mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+  color: white !important;
+}
+
+/* ✅ Focused (keyboard navigation) */
+::ng-deep .mat-mdc-option.mdc-list-item--selected:focus,
+::ng-deep .mat-mdc-option:focus {
+  background-color: #2196f3 !important;
+  color: white !important;
+}
+
+/* ======================================================
+   💬 Dialogs (if used)
+====================================================== */
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #222 !important;
+  color: white !important;
+}
+/* ======================================================
+   ✨ Fix mat-select outlines & borders (Paginator)
+====================================================== */
+
+/* Remove purple outline when focused */
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select.mat-mdc-select-focused .mdc-notched-outline__notch {
+  border-color: white !important;   /* change purple to white */
+}
+
+/* Also make the normal (unfocused) border white or transparent */
+::ng-deep .mat-mdc-select .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-select .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select .mdc-notched-outline__notch {
+  border-color: rgba(255, 255, 255, 0.5) !important; /* soft white border */
+}
+
+/* Remove that inner thin border (the small line around the value) */
+::ng-deep .mat-mdc-select-trigger {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Optional: give it a cleaner look with a subtle white outline */
+::ng-deep .mat-mdc-select {
+  --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.5);
+  --mdc-outlined-text-field-focus-outline-color: white;
+}
+
+.add-button {
+  background-color: rgb(15, 133, 212);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgb(42, 58, 140);
+  }
+}.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(30, 33, 36, 0.25);
+    }
+  }
+  .search-container {
+    flex: 1;
+    max-width: 400px;
+  }
+.mat-header-cell,
+.mat-cell {
+  text-align: center !important;
+  justify-content: center !important;
+}
+

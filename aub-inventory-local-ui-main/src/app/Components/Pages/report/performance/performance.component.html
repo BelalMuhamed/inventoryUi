@@ -1,0 +1,103 @@
+<div>
+  <div class="d-flex align-items-end" style="gap: 50px;">
+    <div class="w-100  " *ngIf="this.role!='Branch Admin'" >
+      <label class="mb-2" style="color: #0f85d3;">Search By Branch</label>
+
+      <select class="form-select" [(ngModel)]="selectedBranch">
+        <option value="" selected disabled>Select Branch</option>
+        <option value="All">All</option>
+        <option [value]="branch.branchName" *ngFor="let branch of brancheNames ">{{branch.branchName}}</option>
+      </select>
+    </div>
+    <div style="min-width: 200px;">
+      <select  [(ngModel)]="selectedYear" class="form-select">
+        <option disabled selected [value]="null">Select a Year</option>
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+      <!-- <mat-form-field appearance="fill" >
+        <mat-label>Enter a Year</mat-label>
+        <input [(ngModel)]="selectedDate" [formControl]="dateForm" matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" (yearSelected)="chosenYearHandler($event)">
+        </mat-datepicker>
+      </mat-form-field> -->
+
+    </div>
+  </div>
+  <div class="text-center" style="width: 100%;">
+    <button class=" btn btn-dark mt-3 " (click)="searchPerformance()" [disabled]="!validSearch()">
+      <div class="d-flex align-items-center">
+        <img src="../..//../../../assets/Imgs/search2.png" class="me-1" width="20px" height="20px" style="color: white;">
+        <span>Search</span>
+      </div>
+    </button>
+  </div>
+
+</div>
+<div class="text-end mt-5">
+  <button class="btn btn-success" (click)="exportPerformanceToExcel()">
+    <div class="d-flex align-items-center ">
+      <img src="../../../../../assets/Imgs/download.png" class="me-1" alt="" width="20px" height="20px">
+      <span>Export To Excel</span>
+    </div>
+  </button>
+</div>
+<div class="table-responsive mt-2">
+  <table class="table table-fixed">
+    <thead class="text-center align-items-center">
+      <th>Branch Name</th>
+      <th  *ngFor="let b of (branchesData | keyvalue)[0]?.value?.cardsIssuedOnMonths let i =index">
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Issued Active Cards as of {{monthNames[i]}}</label>
+        </div>
+      </th>
+      <th>
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Total No. of Issued Cards</label>
+        </div>
+      </th>
+      <th *ngFor="let b of (branchesData | keyvalue)[0]?.value?.cardsDamagedOnMonths let i =index">
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Damaged Cards as of {{monthNames[i]}}</label>
+        </div>
+      </th>
+      <th>
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Total No. of Damaged Cards</label>
+        </div>
+      </th>
+      <th *ngFor="let b of (branchesData | keyvalue)[0]?.value?.cardsErroredOnMonths let i =index">
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Error Cards as of {{monthNames[i]}}</label>
+        </div>
+      </th>
+      <th>
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Total No. of Error Cards</label>
+        </div>
+      </th>
+
+      <th *ngFor="let product of products">
+        <div style="width: 200px;word-wrap: break-word; white-space: normal;background-color: #0f85d3;">
+          <label style="color: white;">Remaining {{product}} Stock</label>
+        </div>
+      </th>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let branch of branchesData | keyvalue" class="text-center">
+        <td>{{branch.key }}</td>
+        <td *ngFor="let issued of branch?.value?.cardsIssuedOnMonths">{{issued}}</td>
+        <td>{{calculateTotal(branch?.value?.cardsIssuedOnMonths)}}</td>
+        <td *ngFor="let damaged of branch?.value?.cardsDamagedOnMonths">{{damaged}}</td>
+        <td>{{calculateTotal(branch?.value?.cardsDamagedOnMonths)}}</td>
+        <td *ngFor="let errored of branch?.value?.cardsErroredOnMonths">{{errored}}</td>
+        <td>{{calculateTotal(branch?.value?.cardsErroredOnMonths)}}</td>
+        <ng-container *ngFor="let product of branch?.value?.remainingStockProducts | keyvalue">
+          <td style="margin: 3px;">{{product.value}}</td>
+        </ng-container>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

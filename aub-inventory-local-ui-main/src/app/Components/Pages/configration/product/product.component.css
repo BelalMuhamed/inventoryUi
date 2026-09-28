@@ -1,0 +1,17 @@
+.form-control:focus {
+    border-color: #0f85d3;
+    box-shadow: inset 0 1px 1px rgba(178, 178, 178, 0.075), 0 0 8px rgba(0, 174, 255, 0.925);
+}
+
+.form-select:focus {
+    border-color: #0f85d3;
+    box-shadow: inset 0 1px 1px rgba(209, 209, 209, 0.075), 0 0 8px rgba(0, 174, 255, 0.925);
+}
+
+.submitBtn {
+    background-color: #0f85d3;
+}
+
+.submitBtn:hover {
+    background-color: #eba817;
+}

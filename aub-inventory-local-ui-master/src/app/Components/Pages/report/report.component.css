@@ -1,0 +1,17 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+  .mat-tab {
+    width: 100px !important;
+  }
+
+.mat-mdc-tab-group{
+  --mdc-tab-indicator-active-indicator-color: #0f85d3 !important;
+  --mat-tab-header-active-label-text-color:  #0f85d3 !important;
+  --mat-tab-header-active-hover-label-text-color: #0f85d3 !important;
+  --mat-tab-header-active-hover-indicator-color:#0f85d3 !important;
+  --mat-tab-header-active-ripple-color: #3f51b5 !important;
+  --mat-tab-header-inactive-ripple-color: #3f51b5 !important;
+  --mat-tab-header-active-focus-label-text-color:#0f85d3 !important;
+  --mat-tab-header-active-focus-indicator-color: #0f85d3 !important;
+}

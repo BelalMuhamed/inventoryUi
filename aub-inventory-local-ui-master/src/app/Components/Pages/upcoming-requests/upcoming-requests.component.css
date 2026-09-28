@@ -1,0 +1,67 @@
+th{
+    color: #fff;
+    background: #0f85d3   !important;
+}
+table th:first-child{
+    border-radius:10px 0 0 10px;
+}
+table th:last-child{
+    border-radius:0 10px 10px 0;
+}
+.rounded-error {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rounded-success {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: rgba(25, 135, 84, 0.2);
+    color: #198754;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rounded-file {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: rgba(13, 202, 240, 0.1);
+    color: #1ca5c1;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rounded-message {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rounded-filePath {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background-color: rgba(171, 169, 169, 0.2);
+    color: #7e7c7c;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rounded-batch {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    padding: 6px 10px;
+    border-radius: 30px;
+    background-color: rgba(171, 169, 169, 0.8);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 3px;
+}
